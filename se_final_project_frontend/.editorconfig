@@ -1,0 +1,26 @@
+# http://editorconfig.org
+
+root = true
+
+[*]
+# Indentation style
+indent_style = space
+
+# Indentation size
+indent_size = 2
+
+# Line ending character
+end_of_line = lf
+
+# File character encoding
+charset = utf-8
+
+# Denotes whether to trim whitespace at the end of lines
+trim_trailing_whitespace = true
+
+# Disable for Markdown because trailing whitespace is significant
+[*.md]
+trim_trailing_whitespace = false
+
+# Denotes whether file should end with a newline
+insert_final_newline = true
