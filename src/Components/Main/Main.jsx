@@ -22,6 +22,7 @@ function Main({ isLoading, articles, onSearch, isLoggedIn }) {
           ))}
         </section>
       )}
+      <About />
     </main>
   );
 }

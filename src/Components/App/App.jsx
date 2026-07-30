@@ -6,6 +6,7 @@ import Footer from "../Footer/Footer";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import "./App.css";
+import SavedNews from "../SavedNews/SavedNews";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -55,6 +56,10 @@ function App() {
     setIsModalOpen(false);
   }
 
+  function handleDeleteArticle(article) {
+    setSavedArticles((prev) => prev.filter((a) => a.title !== article.title));
+  }
+
   return (
     <>
       <Header
@@ -72,6 +77,16 @@ function App() {
               articles={searchResults}
               onSearch={handleSearch}
               isLoggedIn={isLoggedIn}
+            />
+          }
+        />
+        <Route
+          path="/saved-news"
+          element={
+            <SavedNews
+              savedArticles={savedArticles}
+              isLoggedIn={isLoggedIn}
+              onDelete={handleDeleteArticle}
             />
           }
         />
