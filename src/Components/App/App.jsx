@@ -3,6 +3,8 @@ import { Routes, Route } from "react-router-dom";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
+import LoginModal from "../LoginModal/LoginModal";
+import RegisterModal from "../RegisterModal/RegisterModal";
 import "./App.css";
 
 function App() {
@@ -12,7 +14,8 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [savedArticles, setSavedArticles] = useState([]);
 
-  function handleLogin() {
+  function handleLogin(email, password) {
+    console.log("Logging in:", email, password);
     setIsLoggedIn(true);
     setActiveModal(null);
   }
@@ -20,6 +23,12 @@ function App() {
   function handleLoginClick() {
     console.log("Login button clicked!");
     setActiveModal("login");
+  }
+
+  function handleRegister(email, password, name) {
+    console.log("Registering:", email, password, name);
+    setIsLoggedIn(true);
+    setActiveModal(null);
   }
 
   function handleLogout() {
@@ -67,14 +76,19 @@ function App() {
           }
         />
       </Routes>
-      // TEMP FOR TESTING
       {activeModal === "login" && (
-        <div className="modal-placeholder">
-          <div className="modal-placeholder__content">
-            <h2>Login Modal Placeholder</h2>
-            <button onClick={() => setActiveModal(null)}>Close</button>
-          </div>
-        </div>
+        <LoginModal
+          isOpen={true}
+          onClose={() => setActiveModal(null)}
+          onLogin={handleLogin}
+        />
+      )}
+      {activeModal === "register" && (
+        <RegisterModal
+          isOpen={true}
+          onClose={() => setActiveModal(null)}
+          onRegister={handleRegister}
+        />
       )}
       <Footer />
     </>
