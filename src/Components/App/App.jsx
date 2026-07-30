@@ -17,6 +17,11 @@ function App() {
     setActiveModal(null);
   }
 
+  function handleLoginClick() {
+    console.log("Login button clicked!");
+    setActiveModal("login");
+  }
+
   function handleLogout() {
     setIsLoggedIn(false);
   }
@@ -45,6 +50,7 @@ function App() {
     <>
       <Header
         isLoggedIn={isLoggedIn}
+        onLoginClick={handleLoginClick}
         onClick={() => setActiveModal("login")}
         onLogoutClick={handleLogout}
       />
@@ -61,6 +67,15 @@ function App() {
           }
         />
       </Routes>
+      // TEMP FOR TESTING
+      {activeModal === "login" && (
+        <div className="modal-placeholder">
+          <div className="modal-placeholder__content">
+            <h2>Login Modal Placeholder</h2>
+            <button onClick={() => setActiveModal(null)}>Close</button>
+          </div>
+        </div>
+      )}
       <Footer />
     </>
   );

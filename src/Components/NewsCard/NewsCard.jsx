@@ -1,12 +1,3 @@
-function NewsCard() {
-  return (
-    <article>
-      {Image}
-      {Title}
-      {Description}
-      {Link}
-    </article>
-  );
-}
+function NewsCard() {}
 
 export default NewsCard;
