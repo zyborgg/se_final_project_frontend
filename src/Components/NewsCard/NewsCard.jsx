@@ -1,3 +1,5 @@
+import "./NewsCard.css";
+
 function NewsCard({ article, isLoggedIn, isSavedPage, onSave, onDelete }) {
   function handleSave() {
     if (!isLoggedIn) return;

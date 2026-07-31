@@ -1,8 +1,10 @@
 import SearchForm from "../SearchForm/SearchForm";
 import PreLoader from "../Preloader/Preloader";
 import NewsCard from "../NewsCard/NewsCard";
+import About from "../About/About";
+import "./Main.css";
 
-function Main({ isLoading, articles, onSearch, isLoggedIn }) {
+function Main({ isLoading, articles, onSearch, isLoggedIn, onSaveArticle }) {
   return (
     <main className="main">
       <SearchForm onSearch={onSearch} />
@@ -18,7 +20,12 @@ function Main({ isLoading, articles, onSearch, isLoggedIn }) {
       {!isLoading && articles.length > 0 && (
         <section className="main__results">
           {articles.map((article, index) => (
-            <NewsCard key={index} article={article} isLoggedIn={isLoggedIn} />
+            <NewsCard
+              key={index}
+              article={article}
+              isLoggedIn={isLoggedIn}
+              onSave={onSaveArticle}
+            />
           ))}
         </section>
       )}

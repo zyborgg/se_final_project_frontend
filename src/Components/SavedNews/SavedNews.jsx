@@ -1,6 +1,7 @@
 import NewsCard from "../NewsCard/NewsCard";
+import "./SavedNews.css";
 
-function SavedNews({ savedArticles, isLoggedIn, onDelete }) {
+function SavedNews({ savedArticles, isLoggedIn, onDelete, onDeleteArticle }) {
   return (
     <main className="saved-news">
       <section className="saved-news__section">
@@ -23,7 +24,7 @@ function SavedNews({ savedArticles, isLoggedIn, onDelete }) {
             article={article}
             isLoggedIn={isLoggedIn}
             isSavedPage={true}
-            onDelete={onDelete}
+            onDelete={onDeleteArticle}
           />
         ))}
       </section>

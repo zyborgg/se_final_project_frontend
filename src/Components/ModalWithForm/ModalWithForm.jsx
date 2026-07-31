@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import "./ModalWithForm.css";
 
 function ModalWithForm({ isOpen, onClose, title, onSubmit, children }) {
   // close on ESC key

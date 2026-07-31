@@ -56,6 +56,10 @@ function App() {
     setIsModalOpen(false);
   }
 
+  function handleSaveArticle(article) {
+    setSavedArticles((prev) => [...prev, article]);
+  }
+
   function handleDeleteArticle(article) {
     setSavedArticles((prev) => prev.filter((a) => a.title !== article.title));
   }
@@ -77,6 +81,7 @@ function App() {
               articles={searchResults}
               onSearch={handleSearch}
               isLoggedIn={isLoggedIn}
+              onSavedArticle={handleSaveArticle}
             />
           }
         />
@@ -86,7 +91,7 @@ function App() {
             <SavedNews
               savedArticles={savedArticles}
               isLoggedIn={isLoggedIn}
-              onDelete={handleDeleteArticle}
+              onDeleteArticle={handleDeleteArticle}
             />
           }
         />

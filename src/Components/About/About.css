@@ -1,0 +1,16 @@
+.about__image {
+  width: 464px;
+  height: 464px;
+  border-radius: 1000px;
+  object-fit: cover;
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+.about__image-container {
+  width: 464px;
+  height: 464px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
