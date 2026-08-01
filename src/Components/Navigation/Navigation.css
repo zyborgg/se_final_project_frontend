@@ -1,0 +1,40 @@
+.navigation {
+  display: flex;
+  align-items: center;
+  gap: 42px;
+  background: transparent;
+}
+
+.navigation__link {
+  background: none;
+  border: none;
+  text-decoration: none;
+  font-size: 18px;
+  color: #1a1a1a;
+  cursor: pointer;
+}
+
+.navigation__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 32px;
+}
+
+.navigation__list li {
+  margin: 0;
+  padding: 0;
+}
+
+.navigation__button {
+  border: none;
+  background: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.navigation__auth {
+  display: flex;
+  align-items: center;
+}

@@ -1,0 +1,32 @@
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 104px;
+  background: transparent;
+  border: none;
+  position: relative;
+  z-index: 10;
+  list-style: none;
+}
+
+.header__logo {
+  font-size: 24px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.header__nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.header__link {
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: #1a1a1a;
+  cursor: pointer;
+}

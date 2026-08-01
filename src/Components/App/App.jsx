@@ -5,8 +5,10 @@ import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
-import "./App.css";
+import frontPageBackground from "../../assets/frontPageBackground.svg";
 import SavedNews from "../SavedNews/SavedNews";
+import "./HeroWrapper.css";
+import "./App.css";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -66,36 +68,51 @@ function App() {
 
   return (
     <>
-      <Header
-        isLoggedIn={isLoggedIn}
-        onLoginClick={handleLoginClick}
-        onClick={() => setActiveModal("login")}
-        onLogoutClick={handleLogout}
-      />
       <Routes>
         <Route
           path="/"
           element={
-            <Main
-              isLoading={isLoading}
-              articles={searchResults}
-              onSearch={handleSearch}
-              isLoggedIn={isLoggedIn}
-              onSavedArticle={handleSaveArticle}
-            />
+            <div
+              className="hero-wrapper"
+              style={{ backgroundImage: `url(${frontPageBackground})` }}
+            >
+              <Header
+                isLoggedIn={isLoggedIn}
+                onLoginClick={handleLoginClick}
+                onLogoutClick={handleLogout}
+              />
+
+              <Main
+                isLoading={isLoading}
+                articles={searchResults}
+                onSearch={handleSearch}
+                isLoggedIn={isLoggedIn}
+                onSavedArticle={handleSaveArticle}
+              />
+            </div>
           }
         />
+
         <Route
           path="/saved-news"
           element={
-            <SavedNews
-              savedArticles={savedArticles}
-              isLoggedIn={isLoggedIn}
-              onDeleteArticle={handleDeleteArticle}
-            />
+            <>
+              <Header
+                isLoggedIn={isLoggedIn}
+                onLoginClick={handleLoginClick}
+                onLogoutClick={handleLogout}
+              />
+
+              <SavedNews
+                savedArticles={savedArticles}
+                isLoggedIn={isLoggedIn}
+                onDeleteArticle={handleDeleteArticle}
+              />
+            </>
           }
         />
       </Routes>
+
       {activeModal === "login" && (
         <LoginModal
           isOpen={true}
@@ -103,6 +120,7 @@ function App() {
           onLogin={handleLogin}
         />
       )}
+
       {activeModal === "register" && (
         <RegisterModal
           isOpen={true}
@@ -110,15 +128,10 @@ function App() {
           onRegister={handleRegister}
         />
       )}
+
       <Footer />
     </>
   );
 }
 
 export default App;
-
-//leave for now
-{
-  /* <button onClick={openModal}>Open</button>
-{isModalOpen && <Modal onClose={closeModal} />} */
-}
