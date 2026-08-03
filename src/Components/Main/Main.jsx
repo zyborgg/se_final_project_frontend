@@ -1,17 +1,13 @@
 import SearchForm from "../SearchForm/SearchForm";
 import PreLoader from "../Preloader/Preloader";
 import NewsCard from "../NewsCard/NewsCard";
-import About from "../About/About";
 import frontPageBackground from "../../assets/frontPageBackground.svg";
 import "./Main.css";
 
 function Main({ isLoading, articles, onSearch, isLoggedIn, onSaveArticle }) {
   return (
     <>
-      <main
-        className="main"
-        style={{ backgroundImage: `url(${frontPageBackground})` }}
-      >
+      <main className="main">
         <h2 className="main__title">What's going on in the World?</h2>
         <p className="main__subtitle">
           Find the latest news on any topic and save them in your personal
@@ -40,7 +36,6 @@ function Main({ isLoading, articles, onSearch, isLoggedIn, onSaveArticle }) {
           </section>
         )}
       </main>
-      <About />
     </>
   );
 }

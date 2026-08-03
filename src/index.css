@@ -10,7 +10,13 @@ html,
 body {
   width: 100%;
   min-height: 100%;
-  font-family: "Inter", sans-serif;
+  font-family: "roboto", Arial, Helvetica, sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "roboto-slab", Arial, Helvetica, sans-serif;
 }
 
 #root {

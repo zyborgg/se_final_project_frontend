@@ -7,6 +7,7 @@ import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import frontPageBackground from "../../assets/frontPageBackground.svg";
 import SavedNews from "../SavedNews/SavedNews";
+import About from "../About/About";
 import "./HeroWrapper.css";
 import "./App.css";
 
@@ -72,24 +73,50 @@ function App() {
         <Route
           path="/"
           element={
-            <div
-              className="hero-wrapper"
-              style={{ backgroundImage: `url(${frontPageBackground})` }}
-            >
-              <Header
-                isLoggedIn={isLoggedIn}
-                onLoginClick={handleLoginClick}
-                onLogoutClick={handleLogout}
-              />
+            <>
+              {/* HERO SECTION ONLY */}
+              <div
+                className="hero-wrapper"
+                style={{ backgroundImage: `url(${frontPageBackground})` }}
+              >
+                <Header
+                  isLoggedIn={isLoggedIn}
+                  onLoginClick={handleLoginClick}
+                  onLogoutClick={handleLogout}
+                />
 
-              <Main
-                isLoading={isLoading}
-                articles={searchResults}
-                onSearch={handleSearch}
-                isLoggedIn={isLoggedIn}
-                onSavedArticle={handleSaveArticle}
-              />
-            </div>
+                <Main
+                  isLoading={isLoading}
+                  articles={searchResults}
+                  onSearch={handleSearch}
+                  isLoggedIn={isLoggedIn}
+                  onSavedArticle={handleSaveArticle}
+                />
+              </div>
+
+              {/* ⭐ THIS IS THE CORRECT SPOT ⭐ */}
+              <About />
+
+              {/* MODALS */}
+              {activeModal === "login" && (
+                <LoginModal
+                  isOpen={true}
+                  onClose={() => setActiveModal(null)}
+                  onLogin={handleLogin}
+                />
+              )}
+
+              {activeModal === "register" && (
+                <RegisterModal
+                  isOpen={true}
+                  onClose={() => setActiveModal(null)}
+                  onRegister={handleRegister}
+                />
+              )}
+
+              {/* FOOTER */}
+              <Footer />
+            </>
           }
         />
 
@@ -108,28 +135,12 @@ function App() {
                 isLoggedIn={isLoggedIn}
                 onDeleteArticle={handleDeleteArticle}
               />
+
+              <Footer />
             </>
           }
         />
       </Routes>
-
-      {activeModal === "login" && (
-        <LoginModal
-          isOpen={true}
-          onClose={() => setActiveModal(null)}
-          onLogin={handleLogin}
-        />
-      )}
-
-      {activeModal === "register" && (
-        <RegisterModal
-          isOpen={true}
-          onClose={() => setActiveModal(null)}
-          onRegister={handleRegister}
-        />
-      )}
-
-      <Footer />
     </>
   );
 }
