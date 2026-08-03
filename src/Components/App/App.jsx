@@ -17,6 +17,7 @@ function App() {
   const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [savedArticles, setSavedArticles] = useState([]);
+  const [hasSearched, setHasSearched] = useState(false);
 
   function handleLogin(email, password) {
     console.log("Logging in:", email, password);
@@ -40,15 +41,7 @@ function App() {
   }
 
   function handleSearch(term) {
-    setIsLoading(true);
-    // mock search
-    setTimeout(() => {
-      const mockArticles = [
-        { title: "Example Article", description: "Lorem ipsum..." },
-      ];
-      setSearchResults(mockArticles);
-      setIsLoading(false);
-    }, 1500);
+    setHasSearched(true);
   }
 
   function openModal() {
@@ -74,7 +67,6 @@ function App() {
           path="/"
           element={
             <>
-              {/* HERO SECTION ONLY */}
               <div
                 className="hero-wrapper"
                 style={{ backgroundImage: `url(${frontPageBackground})` }}
@@ -91,10 +83,9 @@ function App() {
                   onSearch={handleSearch}
                   isLoggedIn={isLoggedIn}
                   onSavedArticle={handleSaveArticle}
+                  hasSearched={hasSearched}
                 />
               </div>
-
-              {/* ⭐ THIS IS THE CORRECT SPOT ⭐ */}
               <About />
 
               {/* MODALS */}
@@ -113,8 +104,6 @@ function App() {
                   onRegister={handleRegister}
                 />
               )}
-
-              {/* FOOTER */}
               <Footer />
             </>
           }

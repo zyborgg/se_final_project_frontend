@@ -1,33 +1,50 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./Navigation.css";
 
-function Navigation({ isLoggedIn, onLoginClick, onLogoutClick }) {
+function Navigation({ isLoggedIn, onLoginClick, onLogoutClick, userName }) {
   return (
     <nav className="navigation">
       <ul className="navigation__list">
+        {/* HOME LINK */}
         <li>
-          <Link to="/" className="navigation__link">
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              isActive
+                ? "navigation__link navigation__link--active"
+                : "navigation__link"
+            }
+          >
             Home
-          </Link>
+          </NavLink>
         </li>
 
+        {/* SAVED NEWS (only when logged in) */}
         {isLoggedIn && (
           <li>
-            <Link to="/saved-news" className="navigation__link">
-              Saved News
-            </Link>
+            <NavLink
+              to="/saved-news"
+              className={({ isActive }) =>
+                isActive
+                  ? "navigation__link navigation__link--active"
+                  : "navigation__link"
+              }
+            >
+              Saved Articles
+            </NavLink>
           </li>
         )}
       </ul>
 
+      {/* RIGHT-SIDE AUTH BUTTON */}
       <div className="navigation__auth">
         {!isLoggedIn ? (
           <button className="navigation__button" onClick={onLoginClick}>
-            Log In
+            Sign in
           </button>
         ) : (
           <button className="navigation__button" onClick={onLogoutClick}>
-            Log Out
+            {userName} <span className="navigation__arrow">⌄</span>
           </button>
         )}
       </div>
