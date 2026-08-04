@@ -3,6 +3,7 @@ import SearchForm from "../SearchForm/SearchForm";
 import PreLoader from "../Preloader/Preloader";
 import NewsCard from "../NewsCard/NewsCard";
 import frontPageBackground from "../../assets/frontPageBackground.svg";
+import nothingFound from "../../assets/nothingFound.svg";
 import "./Main.css";
 
 function Main({
@@ -27,9 +28,19 @@ function Main({
         {isLoading && <PreLoader />}
 
         {hasSearched && !isLoading && articles.length === 0 && (
-          <p className="main__empty">
-            No results yet. Try searching for something
-          </p>
+          <section className="main__no-results">
+            <img
+              className="no-results__icon"
+              src={nothingFound}
+              alt="magnifying frownie face"
+            />
+            <h2 className="no-results__title">Nothing found</h2>
+            <p className="no-results__text">
+              Sorry, but nothing matched
+              <br />
+              your search terms.
+            </p>
+          </section>
         )}
 
         {!isLoading && articles.length > 0 && (
