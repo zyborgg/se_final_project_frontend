@@ -4,6 +4,7 @@
   gap: 42px;
   background: transparent;
   font-family: "roboto", Arial, Helvetica, sans-serif;
+  position: relative;
 }
 
 .navigation__list {
@@ -22,6 +23,7 @@
   color: #ffffff;
   cursor: pointer;
   position: relative;
+  display: inline-block;
 }
 
 .navigation__list li {
@@ -70,3 +72,30 @@
 .navigation__arrow {
   font-size: 14px;
 }
+
+/* Light theme for Saved News page */
+.nav--light {
+  background-color: #ffffff;
+}
+
+.navigation__link--light {
+  color: #1a1a1a;
+}
+
+.nav--light .navigation__link--active::after {
+  background-color: #1a1a1a;
+}
+
+.navigation__button--light {
+  color: #1a1a1a;
+  border-color: #1a1a1a;
+}
+
+.navigation__arrow--light {
+  color: #1a1a1a;
+}
+
+/* not sure ill need this
+ .navigation__button--light img {
+  filter: invert(0);
+} */

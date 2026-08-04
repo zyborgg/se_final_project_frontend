@@ -1,17 +1,26 @@
 import Navigation from "../Navigation/Navigation";
 import "./Header.css";
 
-function Header({ isLoggedIn, onLoginClick, onLogoutClick, userName }) {
+function Header({
+  isLoggedIn,
+  onLoginClick,
+  onLogoutClick,
+  userName,
+  isSavedNewsPage,
+}) {
   return (
-    <header className="header">
+    <header className={`header ${isSavedNewsPage ? "header--light" : ""}`}>
       <div className="header__logo">NewsExplorer</div>
-      <Navigation
-        isLoggedIn={isLoggedIn}
-        onLoginClick={onLoginClick}
-        onLogoutClick={onLogoutClick}
-        userName={userName}
-      />
-      {/* { SearchForm } */}
+
+      <div className="header__nav">
+        <Navigation
+          isLoggedIn={isLoggedIn}
+          onLoginClick={onLoginClick}
+          onLogoutClick={onLogoutClick}
+          userName={userName}
+          isSavedNewsPage={isSavedNewsPage}
+        />
+      </div>
     </header>
   );
 }

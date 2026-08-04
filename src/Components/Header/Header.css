@@ -6,7 +6,10 @@
   padding: 24px 104px;
   background: transparent;
   border: none;
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 10;
   list-style: none;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
@@ -34,4 +37,10 @@
   font-size: 18px;
   color: #1a1a1a;
   cursor: pointer;
+}
+
+.header--light {
+  background-color: #ffffff;
+  color: #1a1a1a;
+  border-bottom: 1px solid #1a1a1a;
 }

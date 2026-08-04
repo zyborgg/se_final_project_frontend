@@ -1,9 +1,15 @@
 import { NavLink } from "react-router-dom";
 import "./Navigation.css";
 
-function Navigation({ isLoggedIn, onLoginClick, onLogoutClick, userName }) {
+function Navigation({
+  isLoggedIn,
+  onLoginClick,
+  onLogoutClick,
+  userName,
+  isSavedNewsPage,
+}) {
   return (
-    <nav className="navigation">
+    <nav className={`navigation ${isSavedNewsPage ? "nav--light" : ""}`}>
       <ul className="navigation__list">
         {/* HOME LINK */}
         <li>
@@ -11,8 +17,10 @@ function Navigation({ isLoggedIn, onLoginClick, onLogoutClick, userName }) {
             to="/"
             className={({ isActive }) =>
               isActive
-                ? "navigation__link navigation__link--active"
-                : "navigation__link"
+                ? `navigation__link navigation__link--active ${
+                    isSavedNewsPage ? "navigation__link--light" : ""
+                  }`
+                : `navigation__link ${isSavedNewsPage ? "navigation__link--light" : ""}`
             }
           >
             Home
@@ -26,8 +34,10 @@ function Navigation({ isLoggedIn, onLoginClick, onLogoutClick, userName }) {
               to="/saved-news"
               className={({ isActive }) =>
                 isActive
-                  ? "navigation__link navigation__link--active"
-                  : "navigation__link"
+                  ? `navigation__link navigation__link--active ${
+                      isSavedNewsPage ? "navigation__link--light" : ""
+                    }`
+                  : `navigation__link ${isSavedNewsPage ? "navigation__link--light" : ""}`
               }
             >
               Saved Articles
@@ -39,12 +49,29 @@ function Navigation({ isLoggedIn, onLoginClick, onLogoutClick, userName }) {
       {/* RIGHT-SIDE AUTH BUTTON */}
       <div className="navigation__auth">
         {!isLoggedIn ? (
-          <button className="navigation__button" onClick={onLoginClick}>
+          <button
+            className={`navigation__button ${
+              isSavedNewsPage ? "navigation__button--light" : ""
+            }`}
+            onClick={onLoginClick}
+          >
             Sign in
           </button>
         ) : (
-          <button className="navigation__button" onClick={onLogoutClick}>
-            {userName} <span className="navigation__arrow">⌄</span>
+          <button
+            className={`navigation__button ${
+              isSavedNewsPage ? "navigation__button--light" : ""
+            }`}
+            onClick={onLogoutClick}
+          >
+            {userName}
+            <span
+              className={`navigation__arrow ${
+                isSavedNewsPage ? "navigation__arrow--light" : ""
+              }`}
+            >
+              ⌄
+            </span>
           </button>
         )}
       </div>

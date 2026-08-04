@@ -1,7 +1,22 @@
 import NewsCard from "../NewsCard/NewsCard";
 import "./SavedNews.css";
 
-function SavedNews({ savedArticles, isLoggedIn, onDelete, onDeleteArticle }) {
+function SavedNews({ savedArticles, isLoggedIn, onDeleteArticle }) {
+  // CASE A — No saved articles
+  if (savedArticles.length === 0) {
+    return (
+      <main className="saved-news">
+        <section className="saved-news__section">
+          <h2 className="saved-news__title">Saved Articles</h2>
+          <p className="saved-news__empty">
+            You haven't saved any articles yet.
+          </p>
+        </section>
+      </main>
+    );
+  }
+
+  // CASE B — Saved articles exist
   return (
     <main className="saved-news">
       <section className="saved-news__section">
@@ -12,12 +27,6 @@ function SavedNews({ savedArticles, isLoggedIn, onDelete, onDeleteArticle }) {
       </section>
 
       <section className="saved-news__results">
-        {savedArticles.length === 0 && (
-          <p className="saved-news__empty">
-            You haven't saved any articles yet.
-          </p>
-        )}
-
         {savedArticles.map((article, index) => (
           <NewsCard
             key={index}

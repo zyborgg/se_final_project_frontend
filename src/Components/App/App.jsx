@@ -8,6 +8,7 @@ import RegisterModal from "../RegisterModal/RegisterModal";
 import frontPageBackground from "../../assets/frontPageBackground.svg";
 import SavedNews from "../SavedNews/SavedNews";
 import About from "../About/About";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import "./HeroWrapper.css";
 import "./App.css";
 
@@ -18,6 +19,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [savedArticles, setSavedArticles] = useState([]);
   const [hasSearched, setHasSearched] = useState(false);
+  const [userName, setUserName] = useState("");
 
   function handleLogin(email, password) {
     console.log("Logging in:", email, password);
@@ -36,8 +38,19 @@ function App() {
     setActiveModal(null);
   }
 
+  function handleLoginSubmit(email, password) {
+    // mock login
+    setIsLoggedIn(true);
+    setUserName("Ziah"); // temporary until API
+  }
+
   function handleLogout() {
     setIsLoggedIn(false);
+  }
+
+  function handleLogoutClick() {
+    setIsLoggedIn(false);
+    setUserName("");
   }
 
   function handleSearch(term) {
@@ -75,6 +88,8 @@ function App() {
                   isLoggedIn={isLoggedIn}
                   onLoginClick={handleLoginClick}
                   onLogoutClick={handleLogout}
+                  userName={userName}
+                  isSavedNewsPage={false}
                 />
 
                 <Main
@@ -112,21 +127,25 @@ function App() {
         <Route
           path="/saved-news"
           element={
-            <>
-              <Header
-                isLoggedIn={isLoggedIn}
-                onLoginClick={handleLoginClick}
-                onLogoutClick={handleLogout}
-              />
+            <ProtectedRoute isLoggedIn={isLoggedIn}>
+              <>
+                <Header
+                  isLoggedIn={isLoggedIn}
+                  onLogout={handleLogout}
+                  onLoginClick={handleLoginClick}
+                  userName={userName}
+                  isSavedNewsPage={true}
+                />
 
-              <SavedNews
-                savedArticles={savedArticles}
-                isLoggedIn={isLoggedIn}
-                onDeleteArticle={handleDeleteArticle}
-              />
+                <SavedNews
+                  savedArticles={savedArticles}
+                  isLoggedIn={isLoggedIn}
+                  onDeleteArticle={handleDeleteArticle}
+                />
 
-              <Footer />
-            </>
+                <Footer />
+              </>
+            </ProtectedRoute>
           }
         />
       </Routes>
