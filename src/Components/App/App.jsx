@@ -9,6 +9,7 @@ import frontPageBackground from "../../assets/frontPageBackground.svg";
 import SavedNews from "../SavedNews/SavedNews";
 import About from "../About/About";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import SuccessModal from "../SuccessModal/SuccessModal";
 import "./HeroWrapper.css";
 import "./App.css";
 
@@ -20,6 +21,12 @@ function App() {
   const [savedArticles, setSavedArticles] = useState([]);
   const [hasSearched, setHasSearched] = useState(false);
   const [userName, setUserName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const [isRegisterOpen, setIsRegisterOpen] = useState(false);
+  const [isSuccessOpen, setIsSuccessOpen] = useState(false);
 
   function handleLogin(email, password) {
     console.log("Logging in:", email, password);
@@ -35,7 +42,7 @@ function App() {
   function handleRegister(email, password, name) {
     console.log("Registering:", email, password, name);
     setIsLoggedIn(true);
-    setActiveModal(null);
+    setActiveModal("success");
   }
 
   function handleLoginSubmit(email, password) {
@@ -103,12 +110,16 @@ function App() {
               </div>
               <About />
 
-              {/* MODALS */}
               {activeModal === "login" && (
                 <LoginModal
                   isOpen={true}
                   onClose={() => setActiveModal(null)}
                   onLogin={handleLogin}
+                  onSwitchToSignUp={() => setActiveModal("register")}
+                  email={email}
+                  setEmail={setEmail}
+                  password={password}
+                  setPassword={setPassword}
                 />
               )}
 
@@ -117,8 +128,23 @@ function App() {
                   isOpen={true}
                   onClose={() => setActiveModal(null)}
                   onRegister={handleRegister}
+                  email={email}
+                  setEmail={setEmail}
+                  password={password}
+                  setPassword={setPassword}
+                  name={name}
+                  setName={setName}
                 />
               )}
+
+              {activeModal === "success" && (
+                <SuccessModal
+                  isOpen={true}
+                  onClose={() => setActiveModal(null)}
+                  onSignIn={() => setActiveModal("login")}
+                />
+              )}
+
               <Footer />
             </>
           }

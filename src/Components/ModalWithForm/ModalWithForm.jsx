@@ -1,8 +1,17 @@
 import { useEffect } from "react";
 import "./ModalWithForm.css";
+import closeButton from "../../assets/closeButton.svg";
 
-function ModalWithForm({ isOpen, onClose, title, onSubmit, children }) {
-  // close on ESC key
+function ModalWithForm({
+  isOpen,
+  onClose,
+  title,
+  onSubmit,
+  children,
+  onSwitch,
+  switchText,
+}) {
+
   useEffect(() => {
     function handleEsc(e) {
       if (e.key === "Escape") {
@@ -23,12 +32,14 @@ function ModalWithForm({ isOpen, onClose, title, onSubmit, children }) {
 
   return (
     <div className="modal">
-      {/* {overlay} */}
       <div className="modal__overlay" onClick={onClose}></div>
-      {/* {modal content} */}
       <div className="modal__container">
         <button className="modal__close" onClick={onClose}>
-          X
+          <img
+            className="modal__close-button"
+            src={closeButton}
+            alt="closeButton"
+          />
         </button>
 
         <h2 className="modal__title">{title}</h2>
@@ -36,9 +47,16 @@ function ModalWithForm({ isOpen, onClose, title, onSubmit, children }) {
           {children}
 
           <button type="submit" className="modal__submit">
-            Submit
+            {title}
           </button>
         </form>
+        
+        <p className="modal__switch">
+          or{" "}
+          <span className="modal__switch-link" onClick={onSwitch}>
+            Sign up
+          </span>
+        </p>
       </div>
     </div>
   );
