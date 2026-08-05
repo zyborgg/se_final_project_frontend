@@ -1,9 +1,8 @@
 import { useState } from "react";
 import SearchForm from "../SearchForm/SearchForm";
-import PreLoader from "../Preloader/Preloader";
-import NewsCard from "../NewsCard/NewsCard";
 import frontPageBackground from "../../assets/frontPageBackground.svg";
 import nothingFound from "../../assets/nothingFound.svg";
+import NewsCardList from "../NewsCardList/NewsCardList";
 import "./Main.css";
 
 function Main({
@@ -21,11 +20,10 @@ function Main({
           <h2 className="main__title">What's going on in the World?</h2>
           <p className="main__subtitle">
             Find the latest news on any topic and save them in your personal
-            account
+            account.
           </p>
           <SearchForm onSearch={onSearch} />
         </div>
-        {isLoading && <PreLoader />}
 
         {hasSearched && !isLoading && articles.length === 0 && (
           <section className="main__no-results">
@@ -44,16 +42,11 @@ function Main({
         )}
 
         {!isLoading && articles.length > 0 && (
-          <section className="main__results">
-            {articles.map((article, index) => (
-              <NewsCard
-                key={index}
-                article={article}
-                isLoggedIn={isLoggedIn}
-                onSave={onSaveArticle}
-              />
-            ))}
-          </section>
+          <NewsCardList
+            articles={articles}
+            isLoggedIn={isLoggedIn}
+            onSave={onSaveArticle}
+          />
         )}
       </main>
     </>

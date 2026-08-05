@@ -1,6 +1,11 @@
 .modal {
   z-index: 100;
   position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 280px;
 }
 
 .modal__overlay {

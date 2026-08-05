@@ -10,13 +10,14 @@ import SavedNews from "../SavedNews/SavedNews";
 import About from "../About/About";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import SuccessModal from "../SuccessModal/SuccessModal";
+import Preloader from "../Preloader/Preloader";
 import "./HeroWrapper.css";
 import "./App.css";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [activeModal, setActiveModal] = useState(null);
-  const [searchResults, setSearchResults] = useState([]);
+  // const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [savedArticles, setSavedArticles] = useState([]);
   const [hasSearched, setHasSearched] = useState(false);
@@ -27,6 +28,7 @@ function App() {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
   const [isSuccessOpen, setIsSuccessOpen] = useState(false);
+  const [articles, setArticles] = useState([]);
 
   function handleLogin(email, password) {
     console.log("Logging in:", email, password);
@@ -60,8 +62,17 @@ function App() {
     setUserName("");
   }
 
-  function handleSearch(term) {
+  async function handleSearch(query) {
     setHasSearched(true);
+    setIsLoading(true);
+
+    // TEMPORARY: simulate API delay until backend is connected
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+
+    // TEMPORARY: no results yet
+    setArticles([]);
+
+    setIsLoading(false);
   }
 
   function openModal() {
@@ -101,13 +112,23 @@ function App() {
 
                 <Main
                   isLoading={isLoading}
-                  articles={searchResults}
+                  articles={articles}
                   onSearch={handleSearch}
+                  hasSearched={hasSearched}
                   isLoggedIn={isLoggedIn}
                   onSavedArticle={handleSaveArticle}
-                  hasSearched={hasSearched}
                 />
               </div>
+
+              {isLoading && <Preloader />}
+
+              {!isLoading && articles.length > 0 && (
+                <NewsCardList
+                  articles={articles}
+                  isLoggedIn={isLoggedIn}
+                  onSave={handleSaveArticle}
+                />
+              )}
               <About />
 
               {activeModal === "login" && (
