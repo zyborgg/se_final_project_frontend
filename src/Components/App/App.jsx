@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
+import { searchNews } from "../utils/api";
+import { ERROR_MESSAGES } from "../utils/errors";
+import { fakeCheckToken, fakeLogin } from "../../utils/auth";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
@@ -47,11 +50,30 @@ function App() {
     setActiveModal("success");
   }
 
-  function handleLoginSubmit(email, password) {
-    // mock login
-    setIsLoggedIn(true);
-    setUserName("Ziah"); // temporary until API
+  async function handleLoginSubmit(email, password) {
+    try {
+      const data = await fakeLogin(email, password);
+
+      localStorage.setItem("token", data.token);
+
+      setIsLoggedIn(true);
+      setUserName(data.name);
+      setIsLoginOpen(false);
+    } catch (err) {
+      console.error("Login failed:", err);
+      setLoginError("Something went wrong. Please try again.");
+    }
   }
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      fakeCheckToken(token).then((data) => {
+        setIsLoggedIn(true);
+        setUserName(data.name);
+      });
+    }
+  }, []);
 
   function handleLogout() {
     setIsLoggedIn(false);
@@ -63,16 +85,29 @@ function App() {
   }
 
   async function handleSearch(query) {
+    if (!query.trim()) {
+      setSearchError(ERROR_MESSAGES.emptySearch);
+      return;
+    }
+    setSearchError("");
+    setErrorMessage("");
     setHasSearched(true);
     setIsLoading(true);
 
-    // TEMPORARY: simulate API delay until backend is connected
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      const results = await searchNews(query);
 
-    // TEMPORARY: no results yet
-    setArticles([]);
+      if (results.length === 0) {
+        setArticles([]);
+        return;
+      }
 
-    setIsLoading(false);
+      setArticles(results);
+    } catch (err) {
+      setErrorMessage(ERROR_MESSAGES.requestFailed);
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   function openModal() {
@@ -115,6 +150,8 @@ function App() {
                   articles={articles}
                   onSearch={handleSearch}
                   hasSearched={hasSearched}
+                  searchError={searchError}
+                  errorMessage={errorMessage}
                   isLoggedIn={isLoggedIn}
                   onSavedArticle={handleSaveArticle}
                 />

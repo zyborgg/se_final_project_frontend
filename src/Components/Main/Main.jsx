@@ -10,8 +10,10 @@ function Main({
   articles,
   onSearch,
   hasSearched,
+  searchError,
+  errorMessage,
   isLoggedIn,
-  onSaveArticle,
+  onSavedArticle,
 }) {
   return (
     <>
@@ -23,7 +25,12 @@ function Main({
             account.
           </p>
           <SearchForm onSearch={onSearch} />
+          {/* SEARCH FORM ERROR  */}
+          {searchError && <p className="main__error">{searchError}</p>}
         </div>
+
+        {/* REQUEST ERROR */}
+        {errorMessage && <p className="main__error">{errorMessage}</p>}
 
         {hasSearched && !isLoading && articles.length === 0 && (
           <section className="main__no-results">
@@ -45,7 +52,7 @@ function Main({
           <NewsCardList
             articles={articles}
             isLoggedIn={isLoggedIn}
-            onSave={onSaveArticle}
+            onSave={onSavedArticle}
           />
         )}
       </main>
