@@ -15,9 +15,9 @@ function Header({
       <div className="header__nav">
         <Navigation
           isLoggedIn={isLoggedIn}
+          userName={userName}
           onLoginClick={onLoginClick}
           onLogoutClick={onLogoutClick}
-          userName={userName}
           isSavedNewsPage={isSavedNewsPage}
         />
       </div>

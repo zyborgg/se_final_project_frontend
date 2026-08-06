@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import signOut from "../../assets/signOut.svg";
 import "./Navigation.css";
 
 function Navigation({
@@ -65,13 +66,14 @@ function Navigation({
             onClick={onLogoutClick}
           >
             {userName}
-            <span
+            <img
+              src={signOut}
+              alt="signOutArrow"
               className={`navigation__arrow ${
                 isSavedNewsPage ? "navigation__arrow--light" : ""
               }`}
-            >
-              ⌄
-            </span>
+              onClick={onLogoutClick}
+            />
           </button>
         )}
       </div>

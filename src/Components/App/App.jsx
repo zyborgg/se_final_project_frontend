@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
-import { searchNews } from "../utils/api";
-import { ERROR_MESSAGES } from "../utils/errors";
+import { searchNews } from "../../utils/api";
+import { ERROR_MESSAGES } from "../../utils/errors";
 import { fakeCheckToken, fakeLogin } from "../../utils/auth";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
@@ -14,6 +14,7 @@ import About from "../About/About";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import SuccessModal from "../SuccessModal/SuccessModal";
 import Preloader from "../Preloader/Preloader";
+import NewsCardList from "../NewsCardList/NewsCardList";
 import "./HeroWrapper.css";
 import "./App.css";
 
@@ -32,6 +33,8 @@ function App() {
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
   const [isSuccessOpen, setIsSuccessOpen] = useState(false);
   const [articles, setArticles] = useState([]);
+  const [searchError, setSearchError] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   function handleLogin(email, password) {
     console.log("Logging in:", email, password);
@@ -42,6 +45,7 @@ function App() {
   function handleLoginClick() {
     console.log("Login button clicked!");
     setActiveModal("login");
+    setUserName("Ziah");
   }
 
   function handleRegister(email, password, name) {
@@ -58,7 +62,8 @@ function App() {
 
       setIsLoggedIn(true);
       setUserName(data.name);
-      setIsLoginOpen(false);
+
+      setActiveModal(null);
     } catch (err) {
       console.error("Login failed:", err);
       setLoginError("Something went wrong. Please try again.");
@@ -77,6 +82,8 @@ function App() {
 
   function handleLogout() {
     setIsLoggedIn(false);
+    setUserName("");
+    localStorage.removeItem("token");
   }
 
   function handleLogoutClick() {
@@ -172,7 +179,7 @@ function App() {
                 <LoginModal
                   isOpen={true}
                   onClose={() => setActiveModal(null)}
-                  onLogin={handleLogin}
+                  onLogin={handleLoginSubmit}
                   onSwitchToSignUp={() => setActiveModal("register")}
                   email={email}
                   setEmail={setEmail}
@@ -215,7 +222,7 @@ function App() {
               <>
                 <Header
                   isLoggedIn={isLoggedIn}
-                  onLogout={handleLogout}
+                  onLogoutClick={handleLogout}
                   onLoginClick={handleLoginClick}
                   userName={userName}
                   isSavedNewsPage={true}

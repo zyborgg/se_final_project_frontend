@@ -21,12 +21,14 @@ function normalizeArticle(article) {
     title: article.title || "No title available",
     description: article.description || "No description available",
     source: article.source?.name || "Unknown source",
-    publishedAt: new Date(article.publishedAt).toLocaleDateString("en-US", {
-      month: "long",
-      day: "numeric",
-      year: "numeric",
-    }),
-    urlToImage: article.UrlToImage || "/fallback-image.png",
+    publishedAt: article.publishedAt
+      ? new Date(article.publishedAt).toLocaleDateString("en-US", {
+          month: "long",
+          day: "numeric",
+          year: "numeric",
+        })
+      : "Unknown date",
+    urlToImage: article.urlToImage || "/fallback-image.png",
     link: article.url,
   };
 }
@@ -34,7 +36,7 @@ function normalizeArticle(article) {
 export async function searchNews(query) {
   const { from, to } = getDateRange();
 
-  const url = `${NEWS_API_BASE_URL}?q=${query}&from=${from}&to=${to}&pageSize=${PAGE_SIZE}&apiKey=${NEWS_API_KEY}`;
+  const url = `${NEWS_API_BASE_URL}?q=${query}&from=${from}&to=${to}&sortBy=publishedAt&language=en&pageSize=${PAGE_SIZE}&apiKey=${NEWS_API_KEY}`;
 
   const res = await fetch(url);
 
@@ -43,5 +45,5 @@ export async function searchNews(query) {
   }
 
   const data = await res.json();
-  return data.articles.map(normalizeArticles);
+  return data.articles.map(normalizeArticle);
 }

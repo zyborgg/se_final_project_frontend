@@ -1,6 +1,6 @@
 import "./NewsCard.css";
 
-function NewsCard({ article, isLoggedIn, isSavedPage, onSave, onDelete }) {
+function NewsCard({ article, isLoggedIn, isSavedNewsPage, onSave, onDelete }) {
   function handleSave() {
     if (!isLoggedIn) return;
     onSave(article);
@@ -11,7 +11,7 @@ function NewsCard({ article, isLoggedIn, isSavedPage, onSave, onDelete }) {
   }
 
   return (
-    <article className="news-card">
+    <li className="news-card">
       <div className="news-card__image-container">
         <img
           src={article.image || "https://placehold.com/600x400"}
@@ -21,14 +21,16 @@ function NewsCard({ article, isLoggedIn, isSavedPage, onSave, onDelete }) {
       </div>
 
       <div className="news-card__content">
-        <p className="news-card__date">{article.date || "Unknown data"}</p>
+        <p className="news-card__date">{article.date || "Unknown date"}</p>
         <h3 className="news-card__title">{article.title}</h3>
         <p className="news-card__description">{article.description}</p>
-        <p className="nes-card__source">{article.source || "Unknown source"}</p>
+        <p className="news-card__source">
+          {article.source || "Unknown source"}
+        </p>
       </div>
 
-      <div className="nes-card__actions">
-        {!isSavedPage && (
+      <div className="news-card__actions">
+        {!isSavedNewsPage && (
           <button
             className="news-card__save"
             onClick={handleSave}
@@ -38,13 +40,13 @@ function NewsCard({ article, isLoggedIn, isSavedPage, onSave, onDelete }) {
           </button>
         )}
 
-        {isSavedPage && (
+        {isSavedNewsPage && (
           <button className="news-card__delete" onClick={handleDelete}>
             Delete
           </button>
         )}
       </div>
-    </article>
+    </li>
   );
 }
 

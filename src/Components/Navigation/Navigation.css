@@ -54,8 +54,8 @@
 
 .navigation__button {
   background: transparent;
-  border: 1px solid white;
-  color: white;
+  border: 1px solid #ffffff;
+  color: #ffffff;
   padding: 8px 16px;
   border-radius: 100px;
   font-size: 16px;
@@ -88,14 +88,9 @@
 
 .navigation__button--light {
   color: #1a1a1a;
-  border-color: #1a1a1a;
+  border-color: #000000;
 }
 
 .navigation__arrow--light {
-  color: #1a1a1a;
+  filter: invert(1);
 }
-
-/* not sure ill need this
- .navigation__button--light img {
-  filter: invert(0);
-} */

@@ -1,20 +1,32 @@
 import "./NewsCardList.css";
+import NewsCard from "../NewsCard/NewsCard";
 
-function NewsCardList({ articles, isLoggedIn, onSave }) {
+function NewsCardList({
+  articles,
+  isLoggedIn,
+  onSave,
+  onDelete,
+  isSavedNewsPage,
+}) {
   return (
     <section className="news-card-list">
-      <h2 className="news-card-list__title">Search results</h2>
+      {/* Title only appears on search page */}
+      {!isSavedNewsPage && (
+        <h2 className="news-card-list__title">Search results</h2>
+      )}
 
-      <div className="news-card-list__grid">
+      <ul className="news-card-list__grid">
         {articles.map((article, index) => (
           <NewsCard
-            key={index}
+            key={article.title}
             article={article}
             isLoggedIn={isLoggedIn}
             onSave={onSave}
+            onDelete={onDelete}
+            isSavedNewsPage={isSavedNewsPage}
           />
         ))}
-      </div>
+      </ul>
     </section>
   );
 }

@@ -17,7 +17,7 @@ function SuccessModal({ isOpen, onClose, onSignIn }) {
           />
         </button>
 
-        <h2 className="modal__title">
+        <h2 className="modal__title-success">
           Registration successfully <br /> completed!
         </h2>
 

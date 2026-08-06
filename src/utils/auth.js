@@ -1,7 +1,7 @@
 export function fakeLogin(email, password) {
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve({ token: "fake-jwt-token", email });
+      resolve({ token: "fake-jwt-token", name: "Ziah", email });
     }, 800);
   });
 }
