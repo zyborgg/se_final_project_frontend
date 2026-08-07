@@ -28,8 +28,10 @@
 .search-form__button {
   position: absolute;
   right: 0;
-  top: 8px;
-  height: 48px;
+  top: 0;
+  bottom: 0;
+  height: 64px;
+  width: 168px;
   padding: 0 32px;
   border-radius: 100px;
   border: none;
@@ -41,4 +43,9 @@
   line-height: 24px;
   letter-spacing: 0;
   cursor: pointer;
+}
+
+.search-form__input:focus,
+.search-form__button:focus {
+  outline: none;
 }

@@ -6,12 +6,9 @@ function SearchForm({ onSearch }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    // prevent empty searches
     if (!searchTerm.trim()) return;
 
-    // clear input after search
     onSearch(searchTerm);
-    setSearchTerm("");
   }
 
   return (
