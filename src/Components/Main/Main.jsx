@@ -47,14 +47,6 @@ function Main({
             </p>
           </section>
         )}
-
-        {!isLoading && articles.length > 0 && (
-          <NewsCardList
-            articles={articles}
-            isLoggedIn={isLoggedIn}
-            onSave={onSavedArticle}
-          />
-        )}
       </main>
     </>
   );

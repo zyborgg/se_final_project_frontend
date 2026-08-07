@@ -4,7 +4,9 @@ import "./SavedNews.css";
 function SavedNews({ savedArticles, isLoggedIn, onDeleteArticle }) {
   const articleCount = savedArticles.length;
 
-  const keywords = savedArticles.map((a) => a.keyword).filter(Boolean);
+  const keywords = [
+    ...new Set(savedArticles.map((a) => a.keyword).filter(Boolean)),
+  ];
   const uniqueKeywords = [...new Set(keywords)];
 
   // CASE A — No saved articles
@@ -31,18 +33,19 @@ function SavedNews({ savedArticles, isLoggedIn, onDeleteArticle }) {
           Ziah, you have {savedArticles.length} saved <br /> articles
         </p>
 
-        {uniqueKeywords.length > 0 && (
+        {keywords.length > 0 && (
           <p className="saved-news__keywords">
-            By keywords: {uniqueKeywords.join(", ")}
+            By keywords: {keywords.join(", ")}
           </p>
         )}
       </section>
 
       <NewsCardList
         articles={savedArticles}
-        isLoggedIn={true}
-        onDelete={onDeleteArticle}
+        isLoggedIn={isLoggedIn}
         isSavedNewsPage={true}
+        onDelete={onDeleteArticle}
+        onSave={null}
       />
     </main>
   );

@@ -17,18 +17,28 @@ function getDateRange() {
 }
 
 function normalizeArticle(article) {
+  const rawDate =
+    article.publishedAt || article.published_at || article.date || null;
+
+  let formattedDate = "Unknown date";
+
+  if (rawDate) {
+    const parsed = new Date(rawDate);
+    if (!isNaN(parsed)) {
+      formattedDate = parsed.toLocaleDateString("en-US", {
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+      });
+    }
+  }
+
   return {
     title: article.title || "No title available",
     description: article.description || "No description available",
     source: article.source?.name || "Unknown source",
-    publishedAt: article.publishedAt
-      ? new Date(article.publishedAt).toLocaleDateString("en-US", {
-          month: "long",
-          day: "numeric",
-          year: "numeric",
-        })
-      : "Unknown date",
-    urlToImage: article.urlToImage || "/fallback-image.png",
+    publishedAt: formattedDate,
+    urlToImage: article.urlToImage || article.image || "/fallback-image.png",
     link: article.url,
   };
 }
@@ -45,5 +55,6 @@ export async function searchNews(query) {
   }
 
   const data = await res.json();
+
   return data.articles.map(normalizeArticle);
 }

@@ -1,0 +1,115 @@
+.news-card {
+  font-family: "roboto", Arial, Helvetica, sans-serif;
+  width: 400px;
+  background-color: #ffffff;
+  border-radius: 8px;
+}
+
+.news-card__image-container {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 8px;
+  position: relative;
+}
+
+.news-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.news-card__title {
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 30px;
+  padding-bottom: 16px;
+}
+
+.news-card__description {
+  font-size: 16px;
+  font-weight: 400;
+  font-family: "roboto", Arial, Helvetica, sans-serif;
+}
+
+.news-card__date {
+  color: #b6bcbf;
+  font-size: 18px;
+  padding-top: 20px;
+  padding-bottom: 12px;
+}
+
+.news-card__content {
+  margin-left: 24px;
+  margin-right: 24px;
+}
+
+.news-card__keyword {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: white;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.news-card__save-wrapper {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+
+.news-card__save-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: #ffffff;
+  background-image: url("../../assets/bookmark.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  transition: background-image 0.2s ease;
+}
+
+.news-card__save-button:hover {
+  background-image: url("../../assets/bookmarkHover.svg");
+}
+
+.news-card__tooltip {
+  position: absolute;
+  top: 50%;
+  right: 50px; /* appears to the left of the button */
+  transform: translateY(-50%);
+  background: white;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.news-card__save-wrapper:hover .news-card__tooltip {
+  opacity: 1;
+}
+
+.news-card__delete-button {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: white;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.news-card__delete-button:hover {
+  background: #ffe6e6; /* red-ish hover */
+}

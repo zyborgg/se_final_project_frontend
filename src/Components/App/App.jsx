@@ -21,7 +21,6 @@ import "./App.css";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [activeModal, setActiveModal] = useState(null);
-  // const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [savedArticles, setSavedArticles] = useState([]);
   const [hasSearched, setHasSearched] = useState(false);
@@ -37,19 +36,16 @@ function App() {
   const [errorMessage, setErrorMessage] = useState("");
 
   function handleLogin(email, password) {
-    console.log("Logging in:", email, password);
     setIsLoggedIn(true);
     setActiveModal(null);
   }
 
   function handleLoginClick() {
-    console.log("Login button clicked!");
     setActiveModal("login");
     setUserName("Ziah");
   }
 
   function handleRegister(email, password, name) {
-    console.log("Registering:", email, password, name);
     setIsLoggedIn(true);
     setActiveModal("success");
   }
@@ -129,8 +125,12 @@ function App() {
     setSavedArticles((prev) => [...prev, article]);
   }
 
+  // function handleDeleteArticle(article) {
+  //   setSavedArticles((prev) => prev.filter((a) => a.title !== article.title));
+  // }
+
   function handleDeleteArticle(article) {
-    setSavedArticles((prev) => prev.filter((a) => a.title !== article.title));
+    setSavedArticles((prev) => prev.filter((a) => a.link !== article.link));
   }
 
   return (

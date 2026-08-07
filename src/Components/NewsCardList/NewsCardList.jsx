@@ -10,7 +10,6 @@ function NewsCardList({
 }) {
   return (
     <section className="news-card-list">
-      {/* Title only appears on search page */}
       {!isSavedNewsPage && (
         <h2 className="news-card-list__title">Search results</h2>
       )}
@@ -18,7 +17,7 @@ function NewsCardList({
       <ul className="news-card-list__grid">
         {articles.map((article, index) => (
           <NewsCard
-            key={article.title}
+            key={`${article.title}-${index}`}
             article={article}
             isLoggedIn={isLoggedIn}
             onSave={onSave}
