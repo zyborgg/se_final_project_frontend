@@ -2,14 +2,10 @@ import NewsCardList from "../NewsCardList/NewsCardList";
 import "./SavedNews.css";
 
 function SavedNews({ savedArticles, isLoggedIn, onDeleteArticle }) {
-  const articleCount = savedArticles.length;
-
   const keywords = [
     ...new Set(savedArticles.map((a) => a.keyword).filter(Boolean)),
   ];
-  const uniqueKeywords = [...new Set(keywords)];
 
-  // CASE A — No saved articles
   if (savedArticles.length === 0) {
     return (
       <main className="saved-news">
@@ -23,7 +19,6 @@ function SavedNews({ savedArticles, isLoggedIn, onDeleteArticle }) {
     );
   }
 
-  // CASE B — Saved articles exist
   return (
     <main className="saved-news">
       <section className="saved-news__section">
@@ -35,7 +30,10 @@ function SavedNews({ savedArticles, isLoggedIn, onDeleteArticle }) {
 
         {keywords.length > 0 && (
           <p className="saved-news__keywords">
-            By keywords: {keywords.join(", ")}
+            <span className="saved-news__keywords-label">By keywords:</span>
+            <span className="saved-news__keywords-list">
+              {keywords.join(", ")}
+            </span>
           </p>
         )}
       </section>

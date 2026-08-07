@@ -40,6 +40,7 @@ function normalizeArticle(article) {
     publishedAt: formattedDate,
     urlToImage: article.urlToImage || article.image || "/fallback-image.png",
     link: article.url,
+    keyword: article.keyword || null,
   };
 }
 

@@ -8,13 +8,14 @@
   font-weight: 400;
   margin-bottom: 64px;
   padding-left: 50px;
-  font-family: "roboto slab", Arial, sans-serif;
 }
 
 .news-card-list__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 16px;
-  padding-left: 50px;
+  /* max-width: 1200px; */
+  padding-left: 20px;
+  padding-right: 20px;
   list-style-type: none;
 }

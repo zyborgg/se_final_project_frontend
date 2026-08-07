@@ -34,6 +34,7 @@ function App() {
   const [articles, setArticles] = useState([]);
   const [searchError, setSearchError] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [lastSearchQuery, setLastSearchQuery] = useState("");
 
   function handleLogin(email, password) {
     setIsLoggedIn(true);
@@ -88,6 +89,7 @@ function App() {
   }
 
   async function handleSearch(query) {
+    setLastSearchQuery(query);
     if (!query.trim()) {
       setSearchError(ERROR_MESSAGES.emptySearch);
       return;
@@ -122,12 +124,14 @@ function App() {
   }
 
   function handleSaveArticle(article) {
-    setSavedArticles((prev) => [...prev, article]);
-  }
+    const articleWithKeyword = {
+      ...article,
+      keyword:
+        lastSearchQuery.charAt(0).toUpperCase() + lastSearchQuery.slice(1),
+    };
 
-  // function handleDeleteArticle(article) {
-  //   setSavedArticles((prev) => prev.filter((a) => a.title !== article.title));
-  // }
+    setSavedArticles((prev) => [...prev, articleWithKeyword]);
+  }
 
   function handleDeleteArticle(article) {
     setSavedArticles((prev) => prev.filter((a) => a.link !== article.link));

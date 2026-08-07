@@ -1,13 +1,24 @@
+import { useState } from "react";
 import "./NewsCard.css";
 import bookmark from "../../assets/bookmark.svg";
 import bookmarkSave from "../../assets/bookmarkSave.png";
 import bookmarkHover from "../../assets/bookmarkHover.svg";
 
-function NewsCard({ article, isLoggedIn, isSavedNewsPage, onSave, onDelete }) {
+function NewsCard({
+  article,
+  isLoggedIn,
+  isSavedNewsPage,
+  isSaved,
+  onSave,
+  onDelete,
+}) {
+  const [isVisuallySaved, setIsVisuallySaved] = useState(false);
+
   function handleSave() {
-    console.log("Save clicked!", article);
     if (!isLoggedIn) return;
+
     onSave(article);
+    setIsVisuallySaved(true);
   }
 
   function handleDelete() {
@@ -17,9 +28,12 @@ function NewsCard({ article, isLoggedIn, isSavedNewsPage, onSave, onDelete }) {
   return (
     <li className="news-card">
       <div className="news-card__image-container">
-        {console.log("IMAGE URL:", article.urlToImage)}
         <img
-          src={article.urlToImage || article.image}
+          src={
+            article.urlToImage ||
+            article.image ||
+            "https://placehold.co/600x400"
+          }
           onError={(e) => (e.target.src = "https://placehold.co/600x400")}
           alt={article.title}
           className="news-card__image"
@@ -29,22 +43,26 @@ function NewsCard({ article, isLoggedIn, isSavedNewsPage, onSave, onDelete }) {
           <div className="news-card__keyword">{article.keyword}</div>
         )}
 
-        {/* Save button — search page only */}
         {!isSavedNewsPage && (
           <div className="news-card__save-wrapper">
             <button
-              className="news-card__save-button"
-              onClick={() => isLoggedIn && onSave(article)}
+              className={`news-card__save-button ${
+                isVisuallySaved ? "news-card__save-button--active" : ""
+              }`}
+              onClick={() => {
+                if (!isLoggedIn) return;
+                onSave(article);
+                setIsVisuallySaved(true);
+              }}
               disabled={!isLoggedIn}
             ></button>
 
             {!isLoggedIn && (
-              <div className="news-card__tooltip">Login to save article</div>
+              <div className="news-card__tooltip">Sign in to save article</div>
             )}
           </div>
         )}
 
-        {/* Delete button — saved page only */}
         {isSavedNewsPage && (
           <button
             className="news-card__delete-button"
