@@ -14,8 +14,24 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
-  /* max-width: 1200px; */
   padding-left: 20px;
   padding-right: 20px;
   list-style-type: none;
+}
+
+.search-results__show-more {
+  width: 288px;
+  height: 64px;
+  border-radius: 80px;
+  background-color: #e8e8e8;
+  border: none;
+  font-size: 18px;
+  color: #1a1b22;
+  font-weight: 500;
+  cursor: pointer;
+  display: block;
+  position: relative;
+  top: 80px;
+  left: 540px;
+  margin-bottom: 80px;
 }

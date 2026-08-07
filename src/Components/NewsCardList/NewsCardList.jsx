@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./NewsCardList.css";
 import NewsCard from "../NewsCard/NewsCard";
 
@@ -8,6 +9,8 @@ function NewsCardList({
   onDelete,
   isSavedNewsPage,
 }) {
+  const [visibleCount, setVisibleCount] = useState(3);
+
   return (
     <section className="news-card-list">
       {!isSavedNewsPage && (
@@ -15,7 +18,7 @@ function NewsCardList({
       )}
 
       <ul className="news-card-list__grid">
-        {articles.map((article, index) => (
+        {articles.slice(0, visibleCount).map((article, index) => (
           <NewsCard
             key={`${article.title}-${index}`}
             article={article}
@@ -26,6 +29,14 @@ function NewsCardList({
           />
         ))}
       </ul>
+      {articles.length > visibleCount && (
+        <button
+          className="search-results__show-more"
+          onClick={() => setVisibleCount(visibleCount + 3)}
+        >
+          Show more
+        </button>
+      )}
     </section>
   );
 }

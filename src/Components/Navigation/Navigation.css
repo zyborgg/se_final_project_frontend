@@ -84,6 +84,8 @@
 
 .nav--light .navigation__link--active::after {
   background-color: #1a1a1a;
+  width: 178px;
+  bottom: -37px;
 }
 
 .navigation__button--light {

@@ -16,13 +16,8 @@
 }
 
 .header__logo {
-  font-size: 24px;
-  font-weight: 500;
-  line-height: 24px;
-  letter-spacing: 0px;
-  vertical-align: middle;
-  color: #ffffff;
-  font-family: "roboto", Arial, Helvetica, sans-serif;
+  width: 200px;
+  height: 24px;
 }
 
 .header__nav {

@@ -1,4 +1,6 @@
 import Navigation from "../Navigation/Navigation";
+import NewsExplorerWhite from "../../assets/NewsExplorerWhite.svg";
+import NewsExplorerBlack from "../../assets/NewsExplorerBlack.svg";
 import "./Header.css";
 
 function Header({
@@ -10,7 +12,13 @@ function Header({
 }) {
   return (
     <header className={`header ${isSavedNewsPage ? "header--light" : ""}`}>
-      <div className="header__logo">NewsExplorer</div>
+      <div className="header__logo-wrapper">
+        <img
+          className="header__logo"
+          src={isSavedNewsPage ? NewsExplorerBlack : NewsExplorerWhite}
+          alt="NewsExplorer"
+        />
+      </div>
 
       <div className="header__nav">
         <Navigation

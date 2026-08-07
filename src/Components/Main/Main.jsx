@@ -25,11 +25,10 @@ function Main({
             account.
           </p>
           <SearchForm onSearch={onSearch} />
-          {/* SEARCH FORM ERROR  */}
+
           {searchError && <p className="main__error">{searchError}</p>}
         </div>
 
-        {/* REQUEST ERROR */}
         {errorMessage && <p className="main__error">{errorMessage}</p>}
 
         {hasSearched && !isLoading && articles.length === 0 && (

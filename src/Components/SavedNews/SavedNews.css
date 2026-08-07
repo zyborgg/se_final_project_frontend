@@ -15,6 +15,7 @@
   color: #1a1b22;
   opacity: 0.5;
   margin-bottom: 28px;
+  padding-left: 104px;
 }
 
 .saved-news__count {
@@ -25,6 +26,7 @@
   letter-spacing: 0;
   color: #1a1b22;
   padding-bottom: 30px;
+  padding-left: 104px;
 }
 
 .saved-news__empty {
@@ -34,7 +36,8 @@
   font-weight: 400;
   letter-spacing: 0;
   color: #1a1b22;
-  margin-top: 92px;
+  margin-top: 42px;
+  padding-left: 104px;
 }
 
 .saved-news__list {
@@ -47,6 +50,7 @@
   font-size: 18px;
   font-weight: 400;
   line-height: 24px;
+  padding-left: 104px;
 }
 
 .saved-news__keywords-list {
