@@ -18,10 +18,10 @@ function Navigation({
             to="/"
             className={({ isActive }) =>
               isActive
-                ? `navigation__link navigation__link--active ${
+                ? "navigation__link navigation__link--active"
+                : `navigation__link ${
                     isSavedNewsPage ? "navigation__link--light" : ""
                   }`
-                : `navigation__link ${isSavedNewsPage ? "navigation__link--light" : ""}`
             }
           >
             Home

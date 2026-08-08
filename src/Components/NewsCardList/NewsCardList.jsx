@@ -18,24 +18,28 @@ function NewsCardList({
       )}
 
       <ul className="news-card-list__grid">
-        {articles.slice(0, visibleCount).map((article, index) => (
-          <NewsCard
-            key={`${article.title}-${index}`}
-            article={article}
-            isLoggedIn={isLoggedIn}
-            onSave={onSave}
-            onDelete={onDelete}
-            isSavedNewsPage={isSavedNewsPage}
-          />
-        ))}
+        {(isSavedNewsPage ? articles : articles.slice(0, visibleCount)).map(
+          (article, index) => (
+            <NewsCard
+              key={`${article.title}-${index}`}
+              article={article}
+              isLoggedIn={isLoggedIn}
+              onSave={onSave}
+              onDelete={onDelete}
+              isSavedNewsPage={isSavedNewsPage}
+            />
+          ),
+        )}
       </ul>
-      {articles.length > visibleCount && (
-        <button
-          className="search-results__show-more"
-          onClick={() => setVisibleCount(visibleCount + 3)}
-        >
-          Show more
-        </button>
+      {!isSavedNewsPage && articles.length > visibleCount && (
+        <div className="search-results">
+          <button
+            className="search-results__show-more"
+            onClick={() => setVisibleCount(visibleCount + 3)}
+          >
+            Show more
+          </button>
+        </div>
       )}
     </section>
   );

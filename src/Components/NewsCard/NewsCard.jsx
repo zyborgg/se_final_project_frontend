@@ -64,10 +64,14 @@ function NewsCard({
         )}
 
         {isSavedNewsPage && (
-          <button
-            className="news-card__delete-button"
-            onClick={() => onDelete(article)}
-          ></button>
+          <div className="news-card__delete-wrapper">
+            <button
+              className="news-card__delete-button"
+              onClick={() => onDelete(article)}
+            ></button>
+
+            <div className="news-card__delete-tooltip">Remove from saved</div>
+          </div>
         )}
       </div>
 

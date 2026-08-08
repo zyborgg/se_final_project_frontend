@@ -35,6 +35,7 @@ function App() {
   const [searchError, setSearchError] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [lastSearchQuery, setLastSearchQuery] = useState("");
+  const [isUserLoaded, setIsUserLoaded] = useState(false);
 
   function handleLogin(email, password) {
     setIsLoggedIn(true);
@@ -43,7 +44,6 @@ function App() {
 
   function handleLoginClick() {
     setActiveModal("login");
-    setUserName("Ziah");
   }
 
   function handleRegister(email, password, name) {
@@ -69,12 +69,20 @@ function App() {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    if (token) {
-      fakeCheckToken(token).then((data) => {
+
+    if (!token) {
+      setIsUserLoaded(true);
+      return;
+    }
+
+    fakeCheckToken(token)
+      .then((data) => {
         setIsLoggedIn(true);
         setUserName(data.name);
+      })
+      .finally(() => {
+        setIsUserLoaded(true);
       });
-    }
   }, []);
 
   function handleLogout() {
@@ -135,6 +143,10 @@ function App() {
 
   function handleDeleteArticle(article) {
     setSavedArticles((prev) => prev.filter((a) => a.link !== article.link));
+  }
+
+  if (!isUserLoaded) {
+    return null;
   }
 
   return (
