@@ -31,7 +31,7 @@
   width: 288px;
   height: 64px;
   border-radius: 80px;
-  background-color: #e8e8e8;
+  background-color: #ffffff;
   border: none;
   font-size: 18px;
   color: #1a1b22;
@@ -39,4 +39,8 @@
   cursor: pointer;
   display: block;
   margin: 80px auto;
+}
+
+.search-results__show-more:hover {
+  background-color: #e8e8e8;
 }

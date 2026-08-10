@@ -24,10 +24,6 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [savedArticles, setSavedArticles] = useState([]);
   const [hasSearched, setHasSearched] = useState(false);
-  const [userName, setUserName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
   const [isSuccessOpen, setIsSuccessOpen] = useState(false);
@@ -36,6 +32,7 @@ function App() {
   const [errorMessage, setErrorMessage] = useState("");
   const [lastSearchQuery, setLastSearchQuery] = useState("");
   const [isUserLoaded, setIsUserLoaded] = useState(false);
+  const [userName, setUserName] = useState("");
 
   function handleLogin(email, password) {
     setIsLoggedIn(true);
@@ -197,10 +194,6 @@ function App() {
                   onClose={() => setActiveModal(null)}
                   onLogin={handleLoginSubmit}
                   onSwitchToSignUp={() => setActiveModal("register")}
-                  email={email}
-                  setEmail={setEmail}
-                  password={password}
-                  setPassword={setPassword}
                 />
               )}
 
@@ -209,12 +202,7 @@ function App() {
                   isOpen={true}
                   onClose={() => setActiveModal(null)}
                   onRegister={handleRegister}
-                  email={email}
-                  setEmail={setEmail}
-                  password={password}
-                  setPassword={setPassword}
-                  name={name}
-                  setName={setName}
+                  onSwitchToSignIn={() => setActiveModal("login")}
                 />
               )}
 

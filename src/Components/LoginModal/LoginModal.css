@@ -21,11 +21,6 @@
   font-size: 16px;
 }
 
-.modal__input:focus {
-  background: transparent;
-  outline: none;
-}
-
 .modal__submit {
   margin-top: 20px;
   background: #2f71e5;
@@ -47,4 +42,21 @@
 .modal__switch-link {
   color: #2f71e5;
   cursor: pointer;
+}
+
+.modal__submit--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: #e6e8eb;
+  color: #b6bcbf;
+}
+
+input::placeholder {
+  color: rgba(26, 27, 34, 0.5);
+}
+
+.modal__error {
+  color: #ff4d4f;
+  font-size: 12px;
+  margin-top: 4px;
 }

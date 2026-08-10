@@ -13,10 +13,10 @@
   position: absolute;
 }
 
-.modal__title-sucess {
+.modal__title-success {
   font-size: 24px;
   font-weight: 900;
-  padding-top: 43px;
+  margin-top: 43px;
   padding-left: 36px;
   font-family: "roboto", Arial, Helvetica, sans-serif;
 }
@@ -35,7 +35,8 @@
   border: none;
   background: none;
   padding-left: 36px;
-  padding-bottom: 14px;
+  padding-bottom: 51px;
+  margin-top: 14px;
   font-weight: 400;
   font-family: "Inter", Arial, Helvetica, sans-serif;
   font-size: 18px;

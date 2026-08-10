@@ -4,14 +4,14 @@ import closeButton from "../../assets/closeButton.svg";
 
 function ModalWithForm({
   isOpen,
-  onClose,
+  onClose = () => {},
   title,
   onSubmit,
   children,
-  onSwitch,
-  switchText,
+  onSwitch = () => {},
+  switchText = "",
+  isSubmitDisabled = false,
 }) {
-
   useEffect(() => {
     function handleEsc(e) {
       if (e.key === "Escape") {
@@ -25,9 +25,8 @@ function ModalWithForm({
     return () => {
       document.removeEventListener("keydown", handleEsc);
     };
-  }, [isOpen, onClose]);
+  }, [isOpen]);
 
-  // If modal is closed, render nothing
   if (!isOpen) return null;
 
   return (
@@ -46,15 +45,19 @@ function ModalWithForm({
         <form className="modal__form" onSubmit={onSubmit}>
           {children}
 
-          <button type="submit" className="modal__submit">
+          <button
+            type="submit"
+            className={`modal__submit ${isSubmitDisabled ? "modal__submit--disabled" : ""}`}
+            disabled={isSubmitDisabled}
+          >
             {title}
           </button>
         </form>
-        
+
         <p className="modal__switch">
           or{" "}
           <span className="modal__switch-link" onClick={onSwitch}>
-            Sign up
+            {switchText}
           </span>
         </p>
       </div>
