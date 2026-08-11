@@ -44,3 +44,32 @@
 .search-results__show-more:hover {
   background-color: #e8e8e8;
 }
+
+@media (max-width: 768px) {
+  .news-card-list__grid {
+    grid-template-columns: repeat(3, 224px);
+    gap: 12px;
+    padding-left: 40px;
+    padding-right: 40px;
+    justify-content: center;
+  }
+
+  .news-card-list__title {
+    font-size: 30px;
+    line-height: 34px;
+    padding-left: 40px;
+    margin-top: 40px;
+  }
+
+  .search-results {
+    padding-bottom: 20px;
+  }
+}
+
+@media (max-width: 320px) {
+  .news-card-list {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 0;
+  }
+}

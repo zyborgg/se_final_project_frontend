@@ -111,3 +111,26 @@
 .modal__switch-link {
   text-align: center;
 }
+
+@media (max-width: 768px) {
+  .modal__container {
+    width: 400px;
+    padding: 32px;
+  }
+}
+
+@media (max-width: 320px) {
+  .modal__container {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .modal__close {
+    top: -20px;
+    right: -20px;
+  }
+
+  .modal__title {
+    font-size: 20px;
+  }
+}

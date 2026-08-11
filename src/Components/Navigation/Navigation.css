@@ -96,3 +96,13 @@
 .navigation__arrow--light {
   filter: invert(1);
 }
+
+@media (max-width: 768px) {
+  .navigation__link--active::after {
+    bottom: -30px;
+  }
+
+  .navigation__link--light::after {
+    bottom: -30px;
+  }
+}

@@ -52,11 +52,32 @@
   height: 24px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+  .footer {
+    gap: 40px;
+    padding: 0;
+  }
+
+  .footer__copyright {
+    margin-left: 20px;
+  }
+
+  .footer__nav {
+    gap: 20px;
+  }
+
+  .footer__social {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@media (max-width: 320px) {
   .footer {
     flex-direction: column;
     text-align: center;
     padding: 24px 0;
+    gap: 12px;
   }
 
   .footer__copyright {
