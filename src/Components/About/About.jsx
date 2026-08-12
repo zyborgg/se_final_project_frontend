@@ -16,8 +16,9 @@ function About() {
         </p>
         <p className="about__text">
           NewsExplorer is a project focused on React architecture, component
-          design, and state management. This section will be styled later to
-          match the Figma layout
+          design, and state management. In the past year, studying with
+          TripleTen I have learned many langauges including HTML, CSS,
+          JavaScript, and JSX as well as back-end technology!
         </p>
       </div>
     </section>

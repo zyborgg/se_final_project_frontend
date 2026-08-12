@@ -9,7 +9,6 @@ import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
-import frontPageBackground from "../../assets/frontPageBackground.svg";
 import SavedNews from "../SavedNews/SavedNews";
 import About from "../About/About";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
@@ -143,21 +142,16 @@ function App() {
           path="/"
           element={
             <>
-              <div
-                className="hero-wrapper"
-                style={{ backgroundImage: `url(${frontPageBackground})` }}
-              >
-                <Main
-                  isLoading={isLoading}
-                  articles={articles}
-                  onSearch={handleSearch}
-                  hasSearched={hasSearched}
-                  searchError={searchError}
-                  errorMessage={errorMessage}
-                  isLoggedIn={isLoggedIn}
-                  onSavedArticle={handleSaveArticle}
-                />
-              </div>
+              <Main
+                isLoading={isLoading}
+                articles={articles}
+                onSearch={handleSearch}
+                hasSearched={hasSearched}
+                searchError={searchError}
+                errorMessage={errorMessage}
+                isLoggedIn={isLoggedIn}
+                onSavedArticle={handleSaveArticle}
+              />
 
               {isLoading && <Preloader />}
 

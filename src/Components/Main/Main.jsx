@@ -18,18 +18,20 @@ function Main({
   return (
     <>
       <main className="main">
-        <div className="main__content">
-          <h2 className="main__title">What's going on in the World?</h2>
-          <p className="main__subtitle">
-            Find the latest news on any topic and save them in your personal
-            account.
-          </p>
-          <SearchForm onSearch={onSearch} />
+        <div className="main__hero">
+          <div className="main__content">
+            <h2 className="main__title">What's going on in the World?</h2>
+            <p className="main__subtitle">
+              Find the latest news on any topic and save them in your personal
+              account.
+            </p>
 
-          {searchError && <p className="main__error">{searchError}</p>}
+            <SearchForm onSearch={onSearch} />
+
+            {searchError && <p className="main__error">{searchError}</p>}
+            {errorMessage && <p className="main__error">{errorMessage}</p>}
+          </div>
         </div>
-
-        {errorMessage && <p className="main__error">{errorMessage}</p>}
 
         {hasSearched && !isLoading && articles.length === 0 && (
           <section className="main__no-results">
