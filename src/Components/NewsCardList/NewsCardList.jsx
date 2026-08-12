@@ -20,17 +20,19 @@ function NewsCardList({
       <ul className="news-card-list__grid">
         {(isSavedNewsPage ? articles : articles.slice(0, visibleCount)).map(
           (article, index) => (
-            <NewsCard
-              key={`${article.title}-${index}`}
-              article={article}
-              isLoggedIn={isLoggedIn}
-              onSave={onSave}
-              onDelete={onDelete}
-              isSavedNewsPage={isSavedNewsPage}
-            />
+            <li key={`${article.title}-${index}`}>
+              <NewsCard
+                article={article}
+                isLoggedIn={isLoggedIn}
+                onSave={onSave}
+                onDelete={onDelete}
+                isSavedNewsPage={isSavedNewsPage}
+              />
+            </li>
           ),
         )}
       </ul>
+
       {!isSavedNewsPage && articles.length > visibleCount && (
         <div className="search-results">
           <button

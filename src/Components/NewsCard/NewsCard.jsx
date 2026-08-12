@@ -26,7 +26,7 @@ function NewsCard({
   }
 
   return (
-    <li className="news-card">
+    <div className="news-card">
       <div className="news-card__image-container">
         <img
           src={
@@ -81,7 +81,7 @@ function NewsCard({
         <p className="news-card__description">{article.description}</p>
         <p className="news-card__source">{article.source}</p>
       </div>
-    </li>
+    </div>
   );
 }
 

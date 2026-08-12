@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { searchNews } from "../../utils/api";
 import { ERROR_MESSAGES } from "../../utils/errors";
 import { fakeCheckToken, fakeLogin } from "../../utils/auth";
@@ -24,9 +25,6 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [savedArticles, setSavedArticles] = useState([]);
   const [hasSearched, setHasSearched] = useState(false);
-  const [isLoginOpen, setIsLoginOpen] = useState(false);
-  const [isRegisterOpen, setIsRegisterOpen] = useState(false);
-  const [isSuccessOpen, setIsSuccessOpen] = useState(false);
   const [articles, setArticles] = useState([]);
   const [searchError, setSearchError] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -34,10 +32,7 @@ function App() {
   const [isUserLoaded, setIsUserLoaded] = useState(false);
   const [userName, setUserName] = useState("");
 
-  function handleLogin(email, password) {
-    setIsLoggedIn(true);
-    setActiveModal(null);
-  }
+  const location = useLocation();
 
   function handleLoginClick() {
     setActiveModal("login");
@@ -88,11 +83,6 @@ function App() {
     localStorage.removeItem("token");
   }
 
-  function handleLogoutClick() {
-    setIsLoggedIn(false);
-    setUserName("");
-  }
-
   async function handleSearch(query) {
     setLastSearchQuery(query);
     if (!query.trim()) {
@@ -120,14 +110,6 @@ function App() {
     }
   }
 
-  function openModal() {
-    setIsModalOpen(true);
-  }
-
-  function closeModal() {
-    setIsModalOpen(false);
-  }
-
   function handleSaveArticle(article) {
     const articleWithKeyword = {
       ...article,
@@ -148,6 +130,14 @@ function App() {
 
   return (
     <>
+      <Header
+        isLoggedIn={isLoggedIn}
+        onLoginClick={handleLoginClick}
+        onLogoutClick={handleLogout}
+        userName={userName}
+        isSavedNewsPage={location.pathname === "/saved-news"}
+      />
+
       <Routes>
         <Route
           path="/"
@@ -157,14 +147,6 @@ function App() {
                 className="hero-wrapper"
                 style={{ backgroundImage: `url(${frontPageBackground})` }}
               >
-                <Header
-                  isLoggedIn={isLoggedIn}
-                  onLoginClick={handleLoginClick}
-                  onLogoutClick={handleLogout}
-                  userName={userName}
-                  isSavedNewsPage={false}
-                />
-
                 <Main
                   isLoading={isLoading}
                   articles={articles}
@@ -186,11 +168,12 @@ function App() {
                   onSave={handleSaveArticle}
                 />
               )}
+
               <About />
 
               {activeModal === "login" && (
                 <LoginModal
-                  isOpen={true}
+                  isOpen
                   onClose={() => setActiveModal(null)}
                   onLogin={handleLoginSubmit}
                   onSwitchToSignUp={() => setActiveModal("register")}
@@ -199,7 +182,7 @@ function App() {
 
               {activeModal === "register" && (
                 <RegisterModal
-                  isOpen={true}
+                  isOpen
                   onClose={() => setActiveModal(null)}
                   onRegister={handleRegister}
                   onSwitchToSignIn={() => setActiveModal("login")}
@@ -208,7 +191,7 @@ function App() {
 
               {activeModal === "success" && (
                 <SuccessModal
-                  isOpen={true}
+                  isOpen
                   onClose={() => setActiveModal(null)}
                   onSignIn={() => setActiveModal("login")}
                 />
@@ -224,20 +207,11 @@ function App() {
           element={
             <ProtectedRoute isLoggedIn={isLoggedIn}>
               <>
-                <Header
-                  isLoggedIn={isLoggedIn}
-                  onLogoutClick={handleLogout}
-                  onLoginClick={handleLoginClick}
-                  userName={userName}
-                  isSavedNewsPage={true}
-                />
-
                 <SavedNews
                   savedArticles={savedArticles}
                   isLoggedIn={isLoggedIn}
                   onDeleteArticle={handleDeleteArticle}
                 />
-
                 <Footer />
               </>
             </ProtectedRoute>

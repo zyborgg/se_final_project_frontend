@@ -58,12 +58,18 @@
 
 @media (max-width: 768px) {
   .saved-news__title {
-    font-size: 24px;
+    font-size: 14px;
   }
 
   .saved-news__section {
     margin: 0;
     padding-left: 40px;
+  }
+
+  .saved-news__empty {
+    font-size: 30px;
+    margin: 0;
+    padding: 0;
   }
 }
 

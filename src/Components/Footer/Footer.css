@@ -54,7 +54,6 @@
 
 @media (max-width: 768px) {
   .footer {
-    gap: 40px;
     padding: 0;
   }
 
@@ -69,6 +68,10 @@
   .footer__social {
     margin: 0;
     padding: 0;
+  }
+
+  .footer__right {
+    margin-right: 20px;
   }
 }
 
