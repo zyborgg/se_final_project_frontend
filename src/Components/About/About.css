@@ -71,7 +71,7 @@
   }
 }
 
-@media (max-width: 320px) {
+@media (max-width: 480px) {
   .about {
     flex-direction: column;
     text-align: center;

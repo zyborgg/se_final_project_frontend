@@ -5,8 +5,6 @@
   flex-direction: column;
   align-items: center;
   padding-top: 80px;
-
-  /* your background image goes here */
   background-image: url("../../assets/frontPageBackground.svg");
   background-size: cover;
   background-position: center;
@@ -88,7 +86,6 @@
 
   .main__title {
     font-size: 36px;
-    /* margin-top: 40px; */
     margin-bottom: 16px;
     text-align: left;
   }
@@ -109,5 +106,24 @@
   .main__no-results {
     flex-shrink: 0;
     margin-bottom: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main__content {
+    max-width: 320px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+
+  .main__title {
+    font-size: 36px;
+    line-height: 40px;
+    margin-top: 30px;
+  }
+
+  .main__subtitle {
+    margin-bottom: 122px;
+    margin-top: 18px;
   }
 }

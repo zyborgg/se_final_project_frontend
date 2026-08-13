@@ -1,5 +1,9 @@
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import signOut from "../../assets/signOut.svg";
+import menu from "../../assets/menu.svg";
+import closeButton from "../../assets/closeButton.svg";
+import NewsExplorerWhite from "../../assets/NewsExplorerWhite.svg";
 import "./Navigation.css";
 
 function Navigation({
@@ -9,8 +13,22 @@ function Navigation({
   userName,
   isSavedNewsPage,
 }) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <nav className={`navigation ${isSavedNewsPage ? "nav--light" : ""}`}>
+      {/* MOBILE HAMBURGER BUTTON */}
+      <div className="navigation__menu-wrapper">
+        <button
+          className={`navigation__menu-button ${
+            isSavedNewsPage ? "navigation__menu-button--light" : ""
+          }`}
+          onClick={() => setIsMenuOpen(true)}
+        >
+          <img src={menu} alt="menu" />
+        </button>
+      </div>
+
       <ul className="navigation__list">
         {/* HOME LINK */}
         <li>
@@ -73,6 +91,85 @@ function Navigation({
                 isSavedNewsPage ? "navigation__arrow--light" : ""
               }`}
             />
+          </button>
+        )}
+      </div>
+      {/* MOBILE OVERLAY */}
+      <div
+        className={`navigation__overlay ${
+          isMenuOpen ? "navigation__overlay--open" : ""
+        }`}
+        onClick={() => setIsMenuOpen(false)}
+      ></div>
+
+      {/* MOBILE MENU */}
+      <div
+        className={`navigation__mobile-menu ${
+          isMenuOpen ? "navigation__mobile-menu--open" : ""
+        } ${isSavedNewsPage ? "navigation__mobile-menu--light" : ""}`}
+      >
+        <div className="navigation__mobile-header">
+          <img
+            src={NewsExplorerWhite}
+            alt="NewsExplorer logo"
+            className="navigation__mobile-logo"
+          />
+
+          <button
+            className="navigation__close-button"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            <img src={closeButton} alt="close menu" />
+          </button>
+        </div>
+
+        <div className="navigation__mobile-separator"></div>
+
+        {/* MOBILE NAV LINKS */}
+        <ul className="navigation__mobile-list">
+          <li>
+            <NavLink
+              to="/"
+              onClick={() => setIsMenuOpen(false)}
+              className="navigation__mobile-link"
+            >
+              Home
+            </NavLink>
+          </li>
+
+          {isLoggedIn && (
+            <li>
+              <NavLink
+                to="/saved-news"
+                onClick={() => setIsMenuOpen(false)}
+                className="navigation__mobile-link"
+              >
+                Saved Articles
+              </NavLink>
+            </li>
+          )}
+        </ul>
+
+        {!isLoggedIn ? (
+          <button
+            className="navigation__mobile-button"
+            onClick={() => {
+              setIsMenuOpen(false);
+              onLoginClick();
+            }}
+          >
+            Sign in
+          </button>
+        ) : (
+          <button
+            className="navigation__mobile-button"
+            onClick={() => {
+              setIsMenuOpen(false);
+              onLogoutClick();
+            }}
+          >
+            <span>{userName}</span>
+            <img src={signOut} alt="logout" />
           </button>
         )}
       </div>

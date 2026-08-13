@@ -55,17 +55,24 @@
   }
 }
 
-@media (max-width: 320px) {
+@media (max-width: 480px) {
   .header {
     padding: 12px 16px;
   }
 
-  .header__nav {
+  /* hide only desktop nav list */
+  .navigation__list {
     display: none;
   }
 
+  /* keep hamburger visible */
+  .navigation__menu-button {
+    display: block;
+  }
+
   .header__logo {
-    font-size: 20px;
     margin-right: auto;
+    width: 117px;
+    height: 24px;
   }
 }
