@@ -60,19 +60,18 @@ function Navigation({
           </button>
         ) : (
           <button
-            className={`navigation__button ${
+            className={`navigation__button navigation__button--signed-in ${
               isSavedNewsPage ? "navigation__button--light" : ""
             }`}
             onClick={onLogoutClick}
           >
-            {userName}
+            <span className="navigation__username">{userName}</span>
             <img
               src={signOut}
               alt="signOutArrow"
               className={`navigation__arrow ${
                 isSavedNewsPage ? "navigation__arrow--light" : ""
               }`}
-              onClick={onLogoutClick}
             />
           </button>
         )}

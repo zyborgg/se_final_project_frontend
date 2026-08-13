@@ -73,6 +73,15 @@
   font-size: 14px;
 }
 
+.navigation__button--signed-in {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 48px;
+  padding: 0 16px;
+  width: 112px;
+}
+
 /* Light theme for Saved News page */
 .nav--light {
   background-color: #ffffff;

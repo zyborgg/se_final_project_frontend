@@ -15,7 +15,6 @@ import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import SuccessModal from "../SuccessModal/SuccessModal";
 import Preloader from "../Preloader/Preloader";
 import NewsCardList from "../NewsCardList/NewsCardList";
-import "./HeroWrapper.css";
 import "./App.css";
 
 function App() {
