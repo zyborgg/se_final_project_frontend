@@ -1,6 +1,7 @@
 import Navigation from "../Navigation/Navigation";
 import NewsExplorerWhite from "../../assets/NewsExplorerWhite.svg";
 import NewsExplorerBlack from "../../assets/NewsExplorerBlack.svg";
+import closeButton from "../../assets/closeButton.svg";
 import "./Header.css";
 
 function Header({
@@ -9,7 +10,11 @@ function Header({
   onLogoutClick,
   userName,
   isSavedNewsPage,
+  isOpen,
+  onClose,
 }) {
+  const isMobile = window.innerWidth <= 480;
+
   return (
     <header className={`header ${isSavedNewsPage ? "header--light" : ""}`}>
       <div className="header__logo-wrapper">
@@ -21,13 +26,24 @@ function Header({
       </div>
 
       <div className="header__nav">
-        <Navigation
-          isLoggedIn={isLoggedIn}
-          userName={userName}
-          onLoginClick={onLoginClick}
-          onLogoutClick={onLogoutClick}
-          isSavedNewsPage={isSavedNewsPage}
-        />
+        {isMobile && isOpen ? (
+          <button
+            className="header__close-button"
+            onClick={() => {
+              onClose();
+            }}
+          >
+            <img src={closeButton} alt="close" />
+          </button>
+        ) : (
+          <Navigation
+            isLoggedIn={isLoggedIn}
+            userName={userName}
+            onLoginClick={onLoginClick}
+            onLogoutClick={onLogoutClick}
+            isSavedNewsPage={isSavedNewsPage}
+          />
+        )}
       </div>
     </header>
   );

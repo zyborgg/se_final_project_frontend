@@ -115,7 +115,7 @@
   filter: invert(1);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .navigation__link--active::after {
     bottom: -30px;
   }
@@ -129,6 +129,11 @@
   .navigation {
     padding: 16px 0;
     list-style-type: none;
+  }
+
+  .navigation,
+  .nav--light {
+    background: transparent !important;
   }
 
   /* Hide desktop nav list + desktop auth button */
@@ -163,6 +168,7 @@
   /* Mobile overlay (dark background behind menu) */
   .navigation__overlay {
     display: none;
+    pointer-events: none;
   }
 
   .navigation__overlay--open {

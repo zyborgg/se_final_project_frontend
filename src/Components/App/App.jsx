@@ -139,6 +139,8 @@ function App() {
         onLogoutClick={handleLogout}
         userName={userName}
         isSavedNewsPage={location.pathname === "/saved-news"}
+        isOpen={activeModal !== null}
+        onClose={() => setActiveModal(null)}
       />
 
       <Routes>
@@ -171,7 +173,7 @@ function App() {
 
               {activeModal === "login" && (
                 <LoginModal
-                  isOpen
+                  isOpen={activeModal === "login"}
                   onClose={() => setActiveModal(null)}
                   onLogin={handleLoginSubmit}
                   onSwitchToSignUp={() => setActiveModal("register")}
@@ -180,7 +182,7 @@ function App() {
 
               {activeModal === "register" && (
                 <RegisterModal
-                  isOpen
+                  isOpen={activeModal === "register"}
                   onClose={() => setActiveModal(null)}
                   onRegister={handleRegister}
                   onSwitchToSignIn={() => setActiveModal("login")}
@@ -189,7 +191,7 @@ function App() {
 
               {activeModal === "success" && (
                 <SuccessModal
-                  isOpen
+                  isOpen={activeModal === "success"}
                   onClose={() => setActiveModal(null)}
                   onSignIn={() => setActiveModal("login")}
                 />

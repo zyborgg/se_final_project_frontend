@@ -55,8 +55,6 @@
   flex-shrink: 0;
   margin-top: 20px;
   margin-bottom: 12px;
-  /* padding-top: 20px;
-  padding-bottom: 12px; */
 }
 
 .news-card__content {
@@ -200,7 +198,7 @@
   opacity: 1;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .news-card {
     width: 224px;
     height: 420px;

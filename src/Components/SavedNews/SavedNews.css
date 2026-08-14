@@ -64,7 +64,7 @@
   padding-left: 8px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .saved-news__title {
     font-size: 14px;
   }
