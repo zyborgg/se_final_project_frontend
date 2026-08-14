@@ -70,6 +70,11 @@ function App() {
         setIsLoggedIn(true);
         setUserName(data.name);
       })
+      .catch(() => {
+        setIsLoggedIn(false);
+        setUserName("");
+        localStorage.removeItem("token");
+      })
       .finally(() => {
         setIsUserLoaded(true);
       });
@@ -202,6 +207,7 @@ function App() {
               <>
                 <SavedNews
                   savedArticles={savedArticles}
+                  userName={userName}
                   isLoggedIn={isLoggedIn}
                   onDeleteArticle={handleDeleteArticle}
                 />

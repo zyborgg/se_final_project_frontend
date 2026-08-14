@@ -1,7 +1,7 @@
 import NewsCardList from "../NewsCardList/NewsCardList";
 import "./SavedNews.css";
 
-function SavedNews({ savedArticles, isLoggedIn, onDeleteArticle }) {
+function SavedNews({ userName, savedArticles, isLoggedIn, onDeleteArticle }) {
   const keywords = [
     ...new Set(savedArticles.map((a) => a.keyword).filter(Boolean)),
   ];
@@ -25,7 +25,17 @@ function SavedNews({ savedArticles, isLoggedIn, onDeleteArticle }) {
         <h2 className="saved-news__title">Saved Articles</h2>
 
         <p className="saved-news__count">
-          Ziah, you have {savedArticles.length} saved <br /> articles
+          {userName}, you have {savedArticles.length}
+          <span className="saved-news__desktop-break">
+            {" "}
+            saved
+            <br />
+            articles
+          </span>
+          <span className="saved-news__mobile-break">
+            <br />
+            saved articles
+          </span>
         </p>
 
         {keywords.length > 0 && (

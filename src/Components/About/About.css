@@ -82,4 +82,13 @@
     max-width: 280px;
     margin: 0 auto;
   }
+
+  .about__image-container {
+    margin-left: 20px;
+  }
+
+  .about__content {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 }
