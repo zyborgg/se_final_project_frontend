@@ -66,12 +66,10 @@
     background: transparent !important;
   }
 
-  /* hide only desktop nav list */
   .navigation__list {
     display: none;
   }
 
-  /* keep hamburger visible */
   .navigation__menu-button {
     display: block;
   }
@@ -86,10 +84,6 @@
     cursor: pointer;
     background: none;
     border: none;
-    /* width: 20px;
-    height: 20px;
-    margin: 0;
-    padding: 0; */
   }
 
   .header--modal-open {

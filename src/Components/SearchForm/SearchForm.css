@@ -126,5 +126,7 @@
     width: 288px;
     height: 56px;
     border-radius: 100px;
+    margin-bottom: 32px;
+    padding: 0 16px;
   }
 }

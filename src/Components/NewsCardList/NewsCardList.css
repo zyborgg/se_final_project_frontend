@@ -79,4 +79,15 @@
   .news-card-list {
     padding-top: 0;
   }
+
+  .news-card-list__title {
+    margin-bottom: 40px;
+    margin-top: 20px;
+  }
+
+  .search-results__show-more {
+    height: 56px;
+    margin-top: 16px;
+    margin-bottom: 24px;
+  }
 }

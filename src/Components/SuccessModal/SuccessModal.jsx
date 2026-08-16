@@ -9,7 +9,7 @@ function SuccessModal({ isOpen, onClose, onSignIn }) {
       <div className="modal__overlay" onClick={onClose}></div>
 
       <div className="modal__container-success">
-        <button className="modal__close" onClick={onClose}>
+        <button className="modal__close modal__close-success" onClick={onClose}>
           <img
             className="modal__close-button"
             src={closeButton}

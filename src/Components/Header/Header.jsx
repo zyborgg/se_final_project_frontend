@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import Navigation from "../Navigation/Navigation";
 import NewsExplorerWhite from "../../assets/NewsExplorerWhite.svg";
 import NewsExplorerBlack from "../../assets/NewsExplorerBlack.svg";
@@ -13,7 +14,16 @@ function Header({
   isOpen,
   onClose,
 }) {
-  const isMobile = window.innerWidth <= 480;
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 480);
+
+  useEffect(() => {
+    function handleResize() {
+      setIsMobile(window.innerWidth <= 480);
+    }
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <header className={`header ${isSavedNewsPage ? "header--light" : ""}`}>

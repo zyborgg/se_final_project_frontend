@@ -125,6 +125,14 @@
   }
 }
 
+@media (max-width: 680px) {
+  .nav--light .navigation__link--active::after {
+    width: 80px;
+    top: 60px;
+    left: 26px;
+  }
+}
+
 @media (max-width: 480px) {
   .navigation {
     padding: 16px 0;

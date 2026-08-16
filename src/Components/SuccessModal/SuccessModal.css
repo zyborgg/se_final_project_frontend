@@ -42,3 +42,16 @@
   font-size: 18px;
   cursor: pointer;
 }
+
+@media (max-width: 480px) {
+  .modal__container-success {
+    position: fixed;
+    top: 100px;
+    width: 90%;
+    height: auto;
+  }
+
+  .modal__close-success {
+    display: none;
+  }
+}
