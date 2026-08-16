@@ -10,7 +10,6 @@
   top: 0;
   left: 0;
   right: 0;
-  /* z-index: 10; */
   list-style: none;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   z-index: 1000;
@@ -53,6 +52,13 @@
 
   .header__nav {
     gap: 16px;
+  }
+}
+
+@media (max-width: 670px) {
+  .header {
+    padding-left: 16px;
+    padding-right: 16px;
   }
 }
 

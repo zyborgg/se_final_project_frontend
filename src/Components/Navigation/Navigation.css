@@ -73,7 +73,6 @@
   display: none;
 }
 
-/* Hide hamburger on desktop */
 .navigation__menu-button {
   display: none;
 }
@@ -131,6 +130,10 @@
     top: 60px;
     left: 26px;
   }
+
+  .navigation__link--active::after {
+    top: 60px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -144,13 +147,11 @@
     background: transparent !important;
   }
 
-  /* Hide desktop nav list + desktop auth button */
   .navigation__list,
   .navigation__auth {
     display: none;
   }
 
-  /* Show hamburger */
   .navigation__menu-button {
     display: block;
     background: none;
@@ -168,12 +169,10 @@
     height: 24px;
   }
 
-  /* Light theme hamburger */
   .navigation__menu-button--light img {
     filter: invert(1);
   }
 
-  /* Mobile overlay (dark background behind menu) */
   .navigation__overlay {
     display: none;
     pointer-events: none;
@@ -187,7 +186,6 @@
     z-index: 15;
   }
 
-  /* Mobile menu container */
   .navigation__mobile-menu {
     display: none;
   }
@@ -205,12 +203,10 @@
     z-index: 30;
   }
 
-  /* Light theme mobile menu */
   .navigation__mobile-menu--light {
     background-color: #ffffff;
   }
 
-  /* Close button */
   .navigation__close-button {
     background: none;
     border: none;
@@ -224,7 +220,6 @@
     height: 24px;
   }
 
-  /* Mobile nav links */
   .navigation__mobile-list {
     list-style: none;
     padding: 0;

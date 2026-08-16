@@ -43,12 +43,23 @@
   cursor: pointer;
 }
 
+.modal__close-success {
+  position: absolute;
+  display: block;
+  top: -40px;
+  right: -40px;
+  background: none;
+  border: none;
+}
+
 @media (max-width: 480px) {
   .modal__container-success {
     position: fixed;
     top: 100px;
     width: 90%;
     height: auto;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   .modal__close-success {

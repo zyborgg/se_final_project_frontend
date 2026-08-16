@@ -5,7 +5,7 @@
   gap: 64px;
   padding: 80px 0;
   max-width: 1200px;
-  margin-top: 80px;
+  margin: 0 auto;
 }
 
 .about__image {
@@ -71,6 +71,28 @@
   }
 }
 
+@media (max-width: 670px) {
+  .about {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 32px;
+    padding: 40px 16px;
+    margin-top: 40px;
+  }
+
+  .about__image,
+  .about__image-container {
+    width: 240px;
+    height: 240px;
+  }
+
+  .about__content {
+    max-width: 100%;
+    padding: 0 16px;
+  }
+}
+
 @media (max-width: 480px) {
   .about {
     flex-direction: column;
@@ -81,10 +103,6 @@
     width: 100%;
     max-width: 280px;
     margin: 0 auto;
-  }
-
-  .about__image-container {
-    margin-left: 20px;
   }
 
   .about__content {

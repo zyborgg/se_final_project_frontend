@@ -71,6 +71,16 @@
   }
 }
 
+@media (max-width: 670px) {
+  .news-card-list__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    justify-content: center;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
 @media (max-width: 480px) {
   .news-card-list__grid {
     grid-template-columns: repeat(1, 288px);

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./NewsCard.css";
 import bookmark from "../../assets/bookmark.svg";
-import bookmarkSave from "../../assets/bookmarkSave.png";
+import bookmarkSave from "../../assets/bookmarkSave.svg";
 import bookmarkHover from "../../assets/bookmarkHover.svg";
 
 function NewsCard({

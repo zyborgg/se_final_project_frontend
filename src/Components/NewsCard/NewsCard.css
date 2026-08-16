@@ -108,7 +108,7 @@
 }
 
 .news-card__save-button--active {
-  background-image: url("../../assets/bookmarkSave.png");
+  background-image: url("../../assets/bookmarkSave.svg");
 }
 
 .news-card__save-button:hover {
@@ -118,7 +118,7 @@
 }
 
 .news-card__save-button--active:hover {
-  background-image: url("../../assets/bookmarkSave.png");
+  background-image: url("../../assets/bookmarkSave.svg");
 }
 
 .news-card__tooltip {
@@ -126,7 +126,7 @@
   top: 50%;
   right: 50px;
   transform: translateY(-50%);
-  background: white;
+  background: #ffffff;
   padding: 6px 10px;
   border-radius: 10px;
   font-size: 12px;
@@ -286,14 +286,11 @@
     display: -webkit-box !important;
     -webkit-line-clamp: 5 !important;
     -webkit-box-orient: vertical !important;
-
     overflow: hidden !important;
     text-overflow: ellipsis !important;
     white-space: normal !important;
-
     line-height: 18px !important;
     height: calc(18px * 5) !important;
-
     flex-grow: 0 !important;
     flex-shrink: 0 !important;
     min-height: 0 !important;

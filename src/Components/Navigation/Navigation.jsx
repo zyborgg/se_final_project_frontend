@@ -30,7 +30,6 @@ function Navigation({
       </div>
 
       <ul className="navigation__list">
-        {/* HOME LINK */}
         <li>
           <NavLink
             to="/"
@@ -46,7 +45,6 @@ function Navigation({
           </NavLink>
         </li>
 
-        {/* SAVED NEWS (only when logged in) */}
         {isLoggedIn && (
           <li>
             <NavLink
@@ -65,7 +63,6 @@ function Navigation({
         )}
       </ul>
 
-      {/* RIGHT-SIDE AUTH BUTTON */}
       <div className="navigation__auth">
         {!isLoggedIn ? (
           <button
@@ -94,7 +91,6 @@ function Navigation({
           </button>
         )}
       </div>
-      {/* MOBILE OVERLAY */}
       <div
         className={`navigation__overlay ${
           isMenuOpen ? "navigation__overlay--open" : ""
@@ -102,7 +98,6 @@ function Navigation({
         onClick={() => setIsMenuOpen(false)}
       ></div>
 
-      {/* MOBILE MENU */}
       <div
         className={`navigation__mobile-menu ${
           isMenuOpen ? "navigation__mobile-menu--open" : ""
@@ -125,7 +120,6 @@ function Navigation({
 
         <div className="navigation__mobile-separator"></div>
 
-        {/* MOBILE NAV LINKS */}
         <ul className="navigation__mobile-list">
           <li>
             <NavLink

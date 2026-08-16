@@ -3,7 +3,6 @@ function Header() {
     <header>
       {/* Logo */}
       {/* {Navigation} */}
-      {/* { SearchForm } */}
     </header>
   );
 }
