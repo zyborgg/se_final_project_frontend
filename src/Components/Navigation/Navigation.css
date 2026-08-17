@@ -125,6 +125,10 @@
 }
 
 @media (max-width: 680px) {
+  .navigation {
+    gap: 20px;
+  }
+
   .nav--light .navigation__link--active::after {
     width: 80px;
     top: 60px;
@@ -133,6 +137,14 @@
 
   .navigation__link--active::after {
     top: 60px;
+  }
+
+  .navigation__button--signed-in {
+    max-width: 60px;
+  }
+
+  .navigation__username {
+    display: none;
   }
 }
 

@@ -17,7 +17,6 @@ function Navigation({
 
   return (
     <nav className={`navigation ${isSavedNewsPage ? "nav--light" : ""}`}>
-      {/* MOBILE HAMBURGER BUTTON */}
       <div className="navigation__menu-wrapper">
         <button
           className={`navigation__menu-button ${
