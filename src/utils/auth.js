@@ -33,19 +33,3 @@ export function fakeDeleteArticle(id) {
     }, 500);
   });
 }
-
-// export function fakeLogin(email, password) {
-//   return new Promise((resolve) => {
-//     setTimeout(() => {
-//       resolve({ token: "fake-jwt-token", name: "Ziah", email });
-//     }, 800);
-//   });
-// }
-
-// export function fakeCheckToken(token) {
-//   return new Promise((resolve) => {
-//     setTimeout(() => {
-//       resolve({ email: "test@example.com" });
-//     }, 800);
-//   });
-// }
