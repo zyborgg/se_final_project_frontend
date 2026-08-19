@@ -45,6 +45,11 @@
   cursor: pointer;
 }
 
+.search-form__button:hover {
+  background-color: #347eff;
+  cursor: pointer;
+}
+
 .search-form__button:active {
   background-color: #2a65cc;
   transform: scale(0.98);

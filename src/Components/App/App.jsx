@@ -36,7 +36,7 @@ function App() {
     setActiveModal("login");
   }
 
-  function handleRegister(email, password, name) {
+  function handleRegister() {
     setIsLoggedIn(true);
     setActiveModal("success");
   }
@@ -53,7 +53,7 @@ function App() {
       setActiveModal(null);
     } catch (err) {
       console.error("Login failed:", err);
-      setLoginError("Something went wrong. Please try again.");
+      console.error("Something went wrong. Please try again.");
     }
   }
 
@@ -61,7 +61,7 @@ function App() {
     const token = localStorage.getItem("token");
 
     if (!token) {
-      setIsUserLoaded(true);
+      Promise.resolve().then(() => setIsUserLoaded(true));
       return;
     }
 
@@ -107,6 +107,7 @@ function App() {
 
       setArticles(results);
     } catch (err) {
+      console.error(err);
       setErrorMessage(ERROR_MESSAGES.requestFailed);
     } finally {
       setIsLoading(false);
@@ -124,7 +125,7 @@ function App() {
   }
 
   function handleDeleteArticle(article) {
-    setSavedArticles((prev) => prev.filter((a) => a.link !== article.link));
+    setSavedArticles((prev) => prev.filter((a) => a.url !== article.url));
   }
 
   if (!isUserLoaded) {

@@ -38,8 +38,8 @@ function normalizeArticle(article) {
     description: article.description || "No description available",
     source: article.source?.name || "Unknown source",
     publishedAt: formattedDate,
-    urlToImage: article.urlToImage || article.image || "/fallback-image.png",
-    link: article.url,
+    urlToImage: article.urlToImage || article.image || null,
+    url: article.url,
     keyword: article.keyword || null,
   };
 }

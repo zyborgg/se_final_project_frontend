@@ -14,7 +14,12 @@ function Footer() {
           <a href="/" className="footer__link">
             Home
           </a>
-          <a href="https://tripleten.com" className="footer__link">
+          <a
+            href="https://tripleten.com"
+            target="_blank"
+            rel="noreferrer"
+            className="footer__link"
+          >
             TripleTen
           </a>
         </nav>

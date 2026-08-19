@@ -135,10 +135,6 @@
     left: 26px;
   }
 
-  .navigation__link--active::after {
-    top: 60px;
-  }
-
   .navigation__button--signed-in {
     max-width: 60px;
   }

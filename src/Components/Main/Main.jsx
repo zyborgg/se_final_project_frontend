@@ -1,8 +1,5 @@
-import { useState } from "react";
 import SearchForm from "../SearchForm/SearchForm";
-import frontPageBackground from "../../assets/frontPageBackground.svg";
 import nothingFound from "../../assets/nothingFound.svg";
-import NewsCardList from "../NewsCardList/NewsCardList";
 import "./Main.css";
 
 function Main({
@@ -12,8 +9,6 @@ function Main({
   hasSearched,
   searchError,
   errorMessage,
-  isLoggedIn,
-  onSavedArticle,
 }) {
   return (
     <>

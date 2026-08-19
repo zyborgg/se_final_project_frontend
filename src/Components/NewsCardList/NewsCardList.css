@@ -70,13 +70,13 @@
   }
 }
 
-@media (max-width: 670px) {
+@media (max-width: 710px) {
   .news-card-list__grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
     justify-content: center;
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-left: 12px;
+    padding-right: 12px;
     margin: 0;
   }
 }

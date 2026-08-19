@@ -25,7 +25,7 @@ function ModalWithForm({
     return () => {
       document.removeEventListener("keydown", handleEsc);
     };
-  }, [isOpen]);
+  }, [isOpen, onClose]);
 
   if (!isOpen) return null;
 

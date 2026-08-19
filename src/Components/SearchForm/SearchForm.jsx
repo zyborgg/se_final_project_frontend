@@ -19,6 +19,7 @@ function SearchForm({ onSearch }) {
           className="search-form__input"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
+          placeholder="Enter topic"
         />
 
         <button type="submit" className="search-form__button">

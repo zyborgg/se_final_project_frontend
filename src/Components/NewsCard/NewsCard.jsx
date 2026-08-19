@@ -1,59 +1,56 @@
 import { useState } from "react";
 import "./NewsCard.css";
-import bookmark from "../../assets/bookmark.svg";
-import bookmarkSave from "../../assets/bookmarkSave.svg";
-import bookmarkHover from "../../assets/bookmarkHover.svg";
 
-function NewsCard({
-  article,
-  isLoggedIn,
-  isSavedNewsPage,
-  isSaved,
-  onSave,
-  onDelete,
-}) {
+function NewsCard({ article, isLoggedIn, isSavedNewsPage, onSave, onDelete }) {
   const [isVisuallySaved, setIsVisuallySaved] = useState(false);
 
-  function handleSave() {
+  function handleSave(e) {
+    e.stopPropagation();
     if (!isLoggedIn) return;
-
     onSave(article);
     setIsVisuallySaved(true);
   }
 
-  function handleDelete() {
+  function handleDelete(e) {
+    e.stopPropagation();
     onDelete(article);
   }
 
   return (
     <div className="news-card">
       <div className="news-card__image-container">
-        <img
-          src={
-            article.urlToImage ||
-            article.image ||
-            "https://placehold.co/600x400"
-          }
-          onError={(e) => (e.target.src = "https://placehold.co/600x400")}
-          alt={article.title}
-          className="news-card__image"
-        />
+        <a
+          href={article.url}
+          target="_blank"
+          rel="noreferrer"
+          className="news-card__link"
+        >
+          <img
+            src={
+              article.urlToImage ||
+              article.image ||
+              "https://placehold.co/600x400"
+            }
+            onError={(e) => (e.target.src = "https://placehold.co/600x400")}
+            alt={article.title}
+            className="news-card__image"
+          />
 
-        {isSavedNewsPage && (
-          <div className="news-card__keyword">{article.keyword}</div>
-        )}
+          {isSavedNewsPage && (
+            <div className="news-card__keyword">{article.keyword}</div>
+          )}
+        </a>
 
         {!isSavedNewsPage && (
-          <div className="news-card__save-wrapper">
+          <div
+            className="news-card__save-wrapper"
+            onClick={(e) => e.stopPropagation()}
+          >
             <button
               className={`news-card__save-button ${
                 isVisuallySaved ? "news-card__save-button--active" : ""
               }`}
-              onClick={() => {
-                if (!isLoggedIn) return;
-                onSave(article);
-                setIsVisuallySaved(true);
-              }}
+              onClick={handleSave}
               disabled={!isLoggedIn}
             ></button>
 
@@ -64,10 +61,13 @@ function NewsCard({
         )}
 
         {isSavedNewsPage && (
-          <div className="news-card__delete-wrapper">
+          <div
+            className="news-card__delete-wrapper"
+            onClick={(e) => e.stopPropagation()}
+          >
             <button
               className="news-card__delete-button"
-              onClick={() => onDelete(article)}
+              onClick={handleDelete}
             ></button>
 
             <div className="news-card__delete-tooltip">Remove from saved</div>
@@ -75,12 +75,19 @@ function NewsCard({
         )}
       </div>
 
-      <div className="news-card__content">
-        <p className="news-card__date">{article.publishedAt}</p>
-        <h3 className="news-card__title">{article.title}</h3>
-        <p className="news-card__description">{article.description}</p>
-        <p className="news-card__source">{article.source}</p>
-      </div>
+      <a
+        href={article.url}
+        target="_blank"
+        rel="noreferrer"
+        className="news-card__link"
+      >
+        <div className="news-card__content">
+          <p className="news-card__date">{article.publishedAt}</p>
+          <h3 className="news-card__title">{article.title}</h3>
+          <p className="news-card__description">{article.description}</p>
+          <p className="news-card__source">{article.source}</p>
+        </div>
+      </a>
     </div>
   );
 }

@@ -1,4 +1,4 @@
-export function fakeLogin(email, password) {
+export function fakeLogin(email) {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve({ token: "fake-jwt-token", name: "Ziah", email });
@@ -26,7 +26,7 @@ export function fakeSaveArticle(article) {
   });
 }
 
-export function fakeDeleteArticle(id) {
+export function fakeDeleteArticle() {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve({ success: true });
