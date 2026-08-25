@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* outline: 1px solid red; */
+}
+
+/* Global layout */
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  font-family: "roboto", Arial, Helvetica, sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "roboto-slab", Arial, Helvetica, sans-serif;
+}
+
+#root {
+  width: 100%;
+  min-height: 100%;
+}
+
+input:-webkit-autofill {
+  background-color: transparent !important;
+  box-shadow: 0 0 0px 1000px transparent inset !important;
+}

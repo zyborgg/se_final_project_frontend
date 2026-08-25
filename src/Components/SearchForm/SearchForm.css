@@ -1,0 +1,138 @@
+.search-form {
+  display: flex;
+  justify-content: center;
+  margin-top: 88px;
+}
+
+.search-form__form {
+  position: relative;
+  width: 608px;
+  height: 64px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.search-form__input {
+  width: 100%;
+  flex: 1;
+  height: 64px;
+  padding-left: 24px;
+  padding-right: 80px;
+  border-radius: 100px;
+  border: none;
+  box-sizing: border-box;
+  font-size: 18px;
+  font-family: "roboto", Arial, sans-serif;
+}
+
+.search-form__button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  height: 64px;
+  width: 168px;
+  padding: 0 32px;
+  border-radius: 100px;
+  border: none;
+  background-color: #2f71e5;
+  color: #ffffff;
+  font-size: 18px;
+  font-family: "roboto", Arial, sans-serif;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0;
+  cursor: pointer;
+}
+
+.search-form__button:hover {
+  background-color: #347eff;
+  cursor: pointer;
+}
+
+.search-form__button:active {
+  background-color: #2a65cc;
+  transform: scale(0.98);
+  transition:
+    background-color 0.15s ease,
+    transform 0.1s ease;
+}
+
+.search-form__input:focus,
+.search-form__button:focus {
+  outline: none;
+}
+
+@media (max-width: 1024px) {
+  .search-form {
+    gap: 12px;
+    padding: 0;
+    margin-top: 16px;
+  }
+
+  .search-form__form {
+    width: 420px;
+    height: 48px;
+    padding-left: 16px;
+    padding-right: 64px;
+    margin-left: 0;
+    position: relative;
+  }
+
+  .search-form__button {
+    height: 48px;
+    padding: 0 16px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+
+  .search-form__input {
+    height: 48px;
+    width: 100%;
+    padding-right: 64px;
+    padding-left: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 32px;
+    gap: 12px;
+  }
+
+  .search-form__form {
+    width: 100%;
+    height: auto !important;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: static;
+    margin-left: 0;
+  }
+
+  .search-form__input {
+    flex: none;
+  }
+
+  .search-form .search-form__input {
+    height: 56px;
+    padding-left: 16px;
+    padding-right: 16px;
+    border-radius: 100px;
+    width: 288px;
+  }
+
+  .search-form__button {
+    position: static;
+    width: 288px;
+    height: 56px;
+    border-radius: 100px;
+    margin-bottom: 32px;
+    padding: 0 16px;
+  }
+}
